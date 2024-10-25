@@ -1,1 +1,4 @@
-site/
+#.DS_store是修改文件，不用上传
+.DS_Store
+#.gitignore是填写git控制不上传远程存储空间的文件
+.gitignore
