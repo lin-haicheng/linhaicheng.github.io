@@ -1,38 +1,113 @@
 # [Info]
 # 左上角标题
-site_name: 林海城的个人网站
+site_name: 忆个小破站
 site_url: https://lin-haicheng.github.io
 site_author: 林海城
 site_description: 林海城的个人网站
+
 
 # [Navigtion]
 nav:
   - 我: 
     - ME/index.md
+
   - 读书:
     - BOOK/index.md
-  - 笔记:
-    - NOTE/index.md
+
+  - 文笔:
+    - ESSAY/index.md
+    - 文章: 
+      - 记忆: ESSAY/Articles/memory.md
+      - 学习: ESSAY/Articles/study.md
+      - 科学: ESSAY/Articles/science.md
+      - 尝试: ESSAY/Articles/try.md
+    - 随笔: 
+      - ESSAY/Jottings/0.md
+
   - 讲稿:
     - LECTURE/index.md
+    - English: 
+      - 音标: LECTURE/YuYan/English/pronunciation/pronunciation.md
+      - 词汇: LECTURE/YuYan/English/vocabulary/vocabulary.md
+      - 语法: LECTURE/YuYan/English/grammar/grammar.md
+    - C++:
+      - 学习阶段: LECTURE/Programming/C++/C++_learning-phase.md
+      - 入门: LECTURE/Programming/C++/C++_Begin/C++_Begin.md
+      - 核心: LECTURE/Programming/C++/C++_core/C++_core.md
+      - 提高: LECTURE/Programming/C++/C++_raise/C++_raise.md
+    - git:
+      - git: LECTURE/Git/git.md
+    - github:
+      - GitHub Pages: LECTURE/Git/GitHub/github-pages.md
+    - Mkdocs: LECTURE/MKdocs/mkdocs.md
+    - FOC:
+      - 深入浅出讲解FOC算法与SVPWM技术(稚晖君): LECTURE/Foc/foc.md
+    - 操作系统: LECTURE/Systems/systems.md
+    - ROS(机器人操作系统): LECTURE/Systems/ros/ros.md
+
   - 博客:
     - BLOG/index.md
+    - Markdown: 
+      - Markdown语法学习: BLOG/Markdown/markdown-grammar.md
+      - Latex常用符号整理: BLOG/Markdown/latex.md
+      - VScode安装和插件: BLOG/Markdown/vscode-extension.md
+    - Linux:
+      - Vim 学习笔记: BLOG/Linux/vim.md
+      - tmux 使用指南: BLOG/Linux/tmux.md
+      - Unix and Linux: BLOG/Linux/unix.md
+      - 树莓派入门指南: BLOG/Linux/pi-start.md
+    - macOS:
+      - 文字编辑技巧: BLOG/macOS/editing-skills.md
+      - 放大镜: BLOG/macOS/zoom.md
+      - macOS 使用 tree 命令和访达进行任务管理: BLOG/macOS/tree.md
+      - Mac 使用 OBS 直播: BLOG/macOS/stream.md
+      - Intel Mac Windows 10 安装: BLOG/macOS/intel-windows.md
+    - 数学:
+      - 加减乘除: BLOG/Maths/elementary_arithmetic.md
+      - 线性代数复习笔记: BLOG/Maths/linear.md
+    - 物理:
+      - 物理电磁学笔记: BLOG/Physics/electromagnetics.md
+    - 电子:
+      - 进制换算: BLOG/Electron/进制换算.md
+    - 电子工程:
+      - 电路方程 | 二阶线性时不变电路方程列写及五要素法总结: BLOG/ElectronicEngineering/rlc.md
+      - 存储器及各种存储器间的关系: BLOG/ElectronicEngineering/storage.md
+      - Verilog 仿真流程: BLOG/ElectronicEngineering/verilog-simulation.md
+      - yosys 简单入门: BLOG/ElectronicEngineering/yosys-try.md
   - 开发:
     - DEV/index.md
+
   - 研究:
     - RESEARCH/index.md
+    - 地理: 
+      - 中国: RESEARCH/DiLi/zhongguo/zhongguo.md
+      
   - 转载:
     - REPRODUCE/index.md
+    - 文章:
+      - 我最好的老师: REPRODUCE/article/my-best-teacher.md
+      - 提问的智慧: REPRODUCE/article/how-to-ask-questions-the-smart-way.md
+
   - 网站:
     # 访客打开网站第一个看到的是 docs/index.md
     # 构建网站时，不用管报错 "The following pages exist in the docs directory, but are not included in the "nav" configuration: index.md"
     # 如果访客之后想要重新看到这个界面，可以在 docs/WEBSITE/index.md 找到
     - WEBSITE/index.md
+    - 网站链接: WEBSITE/Link/link.md
+    - 网站构建:
+      - 介绍: WEBSITE/Build/build.md
+      - 其他: WEBSITE/Build/qitabuild.md
+    - MAC:
+      - MAC开发必备: WEBSITE/Mac/macbibei.md
+      - MAC软件搜索网站: WEBSITE/Mac/macsousuo.md
+
 
 # [UI]
 # [top]
 theme:
   name: material
+  logo: https://pic1.imgdb.cn/item/6796529ad0e0a243d4f81f4d.png
+  favicon: https://pic1.imgdb.cn/item/6796529ad0e0a243d4f81f4d.png
   # [切换日间模式和夜间模式]
   # https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#color-palette-toggle
   palette:
@@ -66,9 +141,6 @@ theme:
     # 给每个 Tab 添加一个 index.md，且在点击 Tab 时打开
     # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#section-index-pages-with-section-index-pages
     - navigation.indexes
-    # 打开 Tab 时左侧目录全部展开
-    # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-expansion
-    - navigation.expand
     # 搜索输入一些字母时推荐补全整个单词
     # https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-suggestions
     - search.suggest
@@ -81,6 +153,9 @@ theme:
     # [点击按钮跳转至 GitHub 修改 Markdown 源文件]
     # https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#code-actions
     - content.action.edit
+    # 打开 Tab 时左侧目录全部展开(开了这个，点击目录所有子目录会跟着全部打开，目录会显得比较臃肿，关闭了，如需打开删除（# - navigation.expand）最前面的#号删除即可)
+    # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-expansion
+    - navigation.expand    
   language: zh # 一些提示性的文字会变成中文
   icon:
     # [添加 GitHub 仓库]
