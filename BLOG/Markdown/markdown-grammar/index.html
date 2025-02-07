@@ -1,0 +1,5461 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="林海城的个人网站">
+      
+      
+        <meta name="author" content="林海城">
+      
+      
+        <link rel="canonical" href="https://lin-haicheng.github.io/BLOG/Markdown/markdown-grammar/">
+      
+      
+        <link rel="prev" href="../../">
+      
+      
+        <link rel="next" href="../latex/">
+      
+      
+      <link rel="icon" href="https://pic1.imgdb.cn/item/6796529ad0e0a243d4f81f4d.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+    
+    
+      
+        <title>Markdown语法学习 - 忆个小破站</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7758b05.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+      <link rel="stylesheet" href="../../../mkdocs/css/no-footer.css">
+    
+      <link rel="stylesheet" href="../../../mkdocs/css/unordered-list-symbols.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#markdown" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="忆个小破站" class="md-header__button md-logo" aria-label="忆个小破站" data-md-component="logo">
+      
+  <img src="https://pic1.imgdb.cn/item/6796529ad0e0a243d4f81f4d.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            忆个小破站
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Markdown语法学习
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lin-haicheng/lin-haicheng.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    lin-haicheng.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ME/" class="md-tabs__link">
+          
+  
+    
+  
+  我
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../BOOK/" class="md-tabs__link">
+          
+  
+    
+  
+  读书
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ESSAY/" class="md-tabs__link">
+          
+  
+    
+  
+  文笔
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../LECTURE/" class="md-tabs__link">
+          
+  
+    
+  
+  讲稿
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  博客
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../DEV/" class="md-tabs__link">
+          
+  
+    
+  
+  开发
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../RESEARCH/" class="md-tabs__link">
+          
+  
+    
+  
+  研究
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../REPRODUCE/" class="md-tabs__link">
+          
+  
+    
+  
+  转载
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../WEBSITE/" class="md-tabs__link">
+          
+  
+    
+  
+  网站
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="忆个小破站" class="md-nav__button md-logo" aria-label="忆个小破站" data-md-component="logo">
+      
+  <img src="https://pic1.imgdb.cn/item/6796529ad0e0a243d4f81f4d.png" alt="logo">
+
+    </a>
+    忆个小破站
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lin-haicheng/lin-haicheng.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    lin-haicheng.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ME/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    我
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            我
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../BOOK/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    读书
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            读书
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ESSAY/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    文笔
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            文笔
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    文章
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            文章
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ESSAY/Articles/memory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    记忆
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ESSAY/Articles/study/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    学习
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ESSAY/Articles/science/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    科学
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ESSAY/Articles/try/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    尝试
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    随笔
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            随笔
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ESSAY/Jottings/0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    开始
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../LECTURE/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    讲稿
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            讲稿
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    English
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            English
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LECTURE/YuYan/English/pronunciation/pronunciation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    音标
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LECTURE/YuYan/English/vocabulary/vocabulary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    词汇
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LECTURE/YuYan/English/grammar/grammar/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    语法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    C++
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            C++
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LECTURE/Programming/C%2B%2B/C%2B%2B_learning-phase/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    学习阶段
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LECTURE/Programming/C%2B%2B/C%2B%2B_Begin/C%2B%2B_Begin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    入门
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LECTURE/Programming/C%2B%2B/C%2B%2B_core/C%2B%2B_core/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    核心
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LECTURE/Programming/C%2B%2B/C%2B%2B_raise/C%2B%2B_raise/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    提高
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    linux
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LECTURE/Linux/commands-concise/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    命令行精简版
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    git
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            git
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LECTURE/Git/git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    github
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            github
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LECTURE/Git/GitHub/github-pages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GitHub Pages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LECTURE/MKdocs/mkdocs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mkdocs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    FOC
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            FOC
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LECTURE/Foc/foc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    深入浅出讲解FOC算法与SVPWM技术(稚晖君)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LECTURE/Systems/systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    操作系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LECTURE/Systems/ros/ros/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ROS(机器人操作系统)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    博客
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            博客
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Markdown
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Markdown
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Markdown语法学习
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Markdown语法学习
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      语言介绍
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#markdown_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Markdown工具介绍
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Markdown工具介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#typora" class="md-nav__link">
+    <span class="md-ellipsis">
+      Typora
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vs-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      VS Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mweb" class="md-nav__link">
+    <span class="md-ellipsis">
+      MWeb
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xcode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Xcode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      标题
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      目录
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      段落
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="段落">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      加粗和倾斜
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      设置字体/颜色/字号
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="设置字体/颜色/字号">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      常用颜色
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      分隔线
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      删除线
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      下划线
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      文本对齐方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      换行
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      脚注
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      提示框
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      链接
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="链接">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      超链接
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      赋值链接
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      图片
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="图片">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      简单图片
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      像网址那样对图片网址使用变量
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      代码
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="代码">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      代码区块
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      行内代码
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      代码框
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      代码图表
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      列表
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="列表">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      无序列表
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      有序列表
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      列表嵌套
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      区块
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="区块">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      区块嵌套
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      区块中使用列表
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      列表中使用区块
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      表格
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="表格">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      制作表格
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      表格对齐方式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      高级用法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="高级用法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      锚点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      公式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      其他
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="其他">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      转义字符
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html" class="md-nav__link">
+    <span class="md-ellipsis">
+      内联 HTML 语法/特殊字符自动转义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      注释
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      空格
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../latex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Latex常用符号整理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vscode-extension/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VScode安装和插件
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/vim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim 学习笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/tmux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    tmux 使用指南
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/unix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unix and Linux
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/pi-start/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    树莓派入门指南
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    macOS
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            macOS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../macOS/editing-skills/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    文字编辑技巧
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../macOS/zoom/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    放大镜
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../macOS/tree/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    macOS 使用 tree 命令和访达进行任务管理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../macOS/stream/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mac 使用 OBS 直播
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../macOS/intel-windows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intel Mac Windows 10 安装
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数学
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            数学
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Maths/elementary_arithmetic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    加减乘除
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Maths/linear/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    线性代数复习笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    物理
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            物理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics/electromagnetics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    物理电磁学笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    电子
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            电子
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Electron/%E8%BF%9B%E5%88%B6%E6%8D%A2%E7%AE%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    进制换算
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    电子工程
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            电子工程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ElectronicEngineering/rlc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    电路方程 | 二阶线性时不变电路方程列写及五要素法总结
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ElectronicEngineering/storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    存储器及各种存储器间的关系
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ElectronicEngineering/verilog-simulation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Verilog 仿真流程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ElectronicEngineering/yosys-try/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    yosys 简单入门
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../DEV/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    开发
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            开发
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../RESEARCH/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    研究
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            研究
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    地理
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            地理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../RESEARCH/DiLi/zhongguo/zhongguo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    中国
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../REPRODUCE/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    转载
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            转载
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    文章
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            文章
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../REPRODUCE/article/my-best-teacher/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    我最好的老师
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../REPRODUCE/article/how-to-ask-questions-the-smart-way/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    提问的智慧
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../WEBSITE/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    网站
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            网站
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WEBSITE/Link/link/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    网站链接
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_3" id="__nav_9_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    网站构建
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_3">
+            <span class="md-nav__icon md-icon"></span>
+            网站构建
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WEBSITE/Build/build/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    介绍
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WEBSITE/Build/qitabuild/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    其他
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_4" id="__nav_9_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    MAC
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_4">
+            <span class="md-nav__icon md-icon"></span>
+            MAC
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WEBSITE/Mac/macbibei/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MAC开发必备
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WEBSITE/Mac/macsousuo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MAC软件搜索网站
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      语言介绍
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#markdown_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Markdown工具介绍
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Markdown工具介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#typora" class="md-nav__link">
+    <span class="md-ellipsis">
+      Typora
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vs-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      VS Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mweb" class="md-nav__link">
+    <span class="md-ellipsis">
+      MWeb
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xcode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Xcode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      标题
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      目录
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      段落
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="段落">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      加粗和倾斜
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      设置字体/颜色/字号
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="设置字体/颜色/字号">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      常用颜色
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      分隔线
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      删除线
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      下划线
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      文本对齐方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      换行
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      脚注
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      提示框
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      链接
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="链接">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      超链接
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      赋值链接
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      图片
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="图片">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      简单图片
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      像网址那样对图片网址使用变量
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      代码
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="代码">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      代码区块
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      行内代码
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      代码框
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      代码图表
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      列表
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="列表">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      无序列表
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      有序列表
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      列表嵌套
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      区块
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="区块">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      区块嵌套
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      区块中使用列表
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      列表中使用区块
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      表格
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="表格">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      制作表格
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      表格对齐方式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      高级用法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="高级用法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      锚点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      公式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      其他
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="其他">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      转义字符
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html" class="md-nav__link">
+    <span class="md-ellipsis">
+      内联 HTML 语法/特殊字符自动转义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      注释
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      空格
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/lin-haicheng/lin-haicheng.github.io/edit/main/docs/BLOG/Markdown/markdown-grammar.md" title="编辑此页" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="markdown">Markdown 语法学习<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><span id="top"><strong>文章开头</strong></span></p>
+</blockquote>
+<ul>
+<li><strong>编者：林海城</strong>  </li>
+<li><strong>日期：2024.10.18</strong>  </li>
+</ul>
+<p>此笔记学习摘抄自<a href="https://www.runoob.com/markdown/md-image.html" target="_blank">菜鸟教程</a> 、<a href="https://yang-xijie.github.io/BLOG/Markdown/grammars/" target="_blank">杨希杰的个人网站</a> 、<a href="https://www.jianshu.com/p/ebe52d2d468f" target="_blank">Markdown语法大全(超级版)</a> ，并根据笔者的使用不断更新，基本使用应该足够。</p>
+<p>点击<a href="#now">这里</a>回到下方介绍锚点 <code>跳转</code> 的阅读位置</p>
+<p>点击<a href="#catalog">这里</a>回到下方介绍目录 <code>TOC</code> 的阅读位置</p>
+<div class="toc">
+<ul>
+<li><a href="#markdown">Markdown 语法学习</a><ul>
+<li><a href="#_1">语言介绍</a></li>
+<li><a href="#markdown_1">Markdown工具介绍</a><ul>
+<li><a href="#typora">Typora</a></li>
+<li><a href="#vs-code">VS Code</a></li>
+<li><a href="#mweb">MWeb</a></li>
+<li><a href="#xcode">Xcode</a></li>
+</ul>
+</li>
+<li><a href="#_2">标题</a></li>
+<li><a href="#_3">目录</a></li>
+<li><a href="#_4">段落</a><ul>
+<li><a href="#_5">加粗和倾斜</a></li>
+<li><a href="#_6">设置字体/颜色/字号</a><ul>
+<li><a href="#_7">常用颜色</a></li>
+</ul>
+</li>
+<li><a href="#_8">分隔线</a></li>
+<li><a href="#_9">删除线</a></li>
+<li><a href="#_10">下划线</a></li>
+<li><a href="#_11">文本对齐方式</a></li>
+<li><a href="#_12">换行</a></li>
+<li><a href="#_13">脚注</a></li>
+<li><a href="#_14">提示框</a></li>
+</ul>
+</li>
+<li><a href="#_15">链接</a><ul>
+<li><a href="#_16">超链接</a></li>
+<li><a href="#_17">赋值链接</a></li>
+</ul>
+</li>
+<li><a href="#_18">图片</a><ul>
+<li><a href="#_19">简单图片</a></li>
+<li><a href="#_20">像网址那样对图片网址使用变量</a></li>
+</ul>
+</li>
+<li><a href="#_21">代码</a><ul>
+<li><a href="#_22">代码区块</a></li>
+<li><a href="#_23">行内代码</a></li>
+<li><a href="#_24">代码框</a></li>
+<li><a href="#_25">代码图表</a></li>
+</ul>
+</li>
+<li><a href="#_26">列表</a><ul>
+<li><a href="#_27">无序列表</a></li>
+<li><a href="#_28">有序列表</a></li>
+<li><a href="#_29">列表嵌套</a></li>
+</ul>
+</li>
+<li><a href="#_30">区块</a><ul>
+<li><a href="#_31">区块嵌套</a></li>
+<li><a href="#_32">区块中使用列表</a></li>
+<li><a href="#_33">列表中使用区块</a></li>
+</ul>
+</li>
+<li><a href="#_34">表格</a><ul>
+<li><a href="#_35">制作表格</a></li>
+<li><a href="#_36">表格对齐方式</a></li>
+</ul>
+</li>
+<li><a href="#_37">高级用法</a><ul>
+<li><a href="#_38">锚点</a></li>
+<li><a href="#_39">公式</a></li>
+</ul>
+</li>
+<li><a href="#_40">其他</a><ul>
+<li><a href="#_41">转义字符</a></li>
+<li><a href="#html">内联 HTML 语法/特殊字符自动转义</a></li>
+<li><a href="#_42">注释</a></li>
+<li><a href="#_43">空格</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="_1">语言介绍<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><img alt="markdown图标" src="../assets/tubiao.png" /></p>
+<p>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档。
+Markdown 语言在 2004 由约翰·格鲁伯（英语：John Gruber）创建。</p>
+<p>Markdown 编写的文档可以导出 HTML 、Word、图像、PDF、Epub 等多种格式的文档。</p>
+<p>Markdown 编写的文档后缀为 .md 或 .markdown，常用在编写电子书，如：Gitbook。</p>
+<p>当前许多网站都广泛使用 Markdown 来撰写帮助文档或是用于论坛上发表消息。例如：GitHub、简书等。</p>
+<p>GitHub支持的语法：<a href="https://guides.github.com/features/mastering-markdown/" target="_blank">GitHub Guides | Mastering Markdown</a></p>
+<p><code>markdown</code>有不少扩展的语法，我们主要学习它最基础的语法，和一些<code>GitHub</code>支持的语法，因为我们之后写<code>markdown</code>文件可能主要是用来写项目的<code>README.md</code>，而这些项目的代码仓库，我们很可能就在<code>GitHub</code>存放。</p>
+<h2 id="markdown_1">Markdown工具介绍<a class="headerlink" href="#markdown_1" title="Permanent link">&para;</a></h2>
+<p>正所谓工欲善其事，必先利其器，有一个好的编辑工具可以事半功倍，以下是几个我推荐的markdown编辑器。</p>
+<h3 id="typora">Typora<a class="headerlink" href="#typora" title="Permanent link">&para;</a></h3>
+<p><a href="https://www.typora.io" target="_blank">Typora官网</a></p>
+<p>所见即所得的<code>markdown</code>编辑软件，全平台；各种意义上都应该是<code>markdown</code>编辑的首选！</p>
+<p>主要用来写单独的markdown（比如我今天要写讲稿了，用markdown写的话我就会考虑Typora）；也可以开一个文件夹专门放自己的笔记……</p>
+<h3 id="vs-code">VS Code<a class="headerlink" href="#vs-code" title="Permanent link">&para;</a></h3>
+<p>安装插件<code>Markdown All in One</code>，会支持不少快捷操作。</p>
+<p><code>VS Code</code>作为程序员中口碑最好的编辑器，写写<code>markdown</code>什么的肯定没问题！拖入一个文件夹新建<code>markdown文件</code>就可以编辑了！</p>
+<p>一般来说，软件开发的项目中，代码都是和<code>markdown文件</code>在一起的，以后如果有一些需要在<code>VS Code</code>打开的项目，使用<code>VS Code</code>编写<code>README.md</code>或者其他的<code>markdown文件</code>也是很方便的一个选择。</p>
+<h3 id="mweb">MWeb<a class="headerlink" href="#mweb" title="Permanent link">&para;</a></h3>
+<p>专业的 Markdown 写作、记笔记、静态博客生成软件，最大的缺点就是<strong>贵</strong>和<strong>这是苹果端的软件</strong>，安卓和windows没有，我正在使用这个软件。这个软件是有破解版滴（小小声），当然如果有能力的话也可以支持下正版，目前是人民币228块钱，终身使用。</p>
+<h3 id="xcode">Xcode<a class="headerlink" href="#xcode" title="Permanent link">&para;</a></h3>
+<p>在<code>Xcode</code>中也可以和添加<code>代码文件</code>一样添加<code>markdown文件</code>。</p>
+<h2 id="_2">标题<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>标题等级有两个格式，第一个格式的更常用。</p>
+<p>1、标题每加1个#号增加一级，只有<strong>一到六级</strong>，没有更高或者更低。</p>
+<div class="language-markdown highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Markdown</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><span class="gh"># 一级标题 (#后注意加空格)</span>
+</span><span id="__span-0-2"><span class="gu">## 二级标题</span>
+</span><span id="__span-0-3"><span class="gu">### 三级标题</span>
+</span><span id="__span-0-4"><span class="gu">#### 四级标题</span>
+</span><span id="__span-0-5"><span class="gu">##### 五级标题</span>
+</span><span id="__span-0-6"><span class="gu">###### 六级标题</span>
+</span></code></pre></div></td></tr></table></div>
+<p>2、使用 <code>=</code> 和 <code>-</code> 标记，组成一级和二级标题。  </p>
+<p>语法: 输入一些内容作为标题，然后回车换下一行输入一个或者多个 - 或者 = 符号就可以生成标题。  </p>
+<p>就算只使用一个符号也可以组成标题只有<strong>一级标题</strong>和<strong>二级标题</strong>，没有其他等级。并且每个md文件里只能有<strong>1个一级标题</strong>，也就是文件开头的第一个，如果在下面还定义了一级标题也<strong>不会在目录里显示</strong>。  </p>
+<div class="language-markdown highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Markdown</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><span class="gh">一级标题</span>
+</span><span id="__span-1-2"><span class="gh">=</span>
+</span><span id="__span-1-3">
+</span><span id="__span-1-4"><span class="gh">一级标题</span>
+</span><span id="__span-1-5"><span class="gh">=================</span>
+</span><span id="__span-1-6">
+</span><span id="__span-1-7">
+</span><span id="__span-1-8"><span class="gu">二级标题</span>
+</span><span id="__span-1-9"><span class="gu">-</span>
+</span><span id="__span-1-10">
+</span><span id="__span-1-11"><span class="gu">二级标题</span>
+</span><span id="__span-1-12"><span class="gu">-----------------</span>
+</span></code></pre></div></td></tr></table></div>
+<p>补充：在同一个一级标题下，添加同样的二级标题如果没有下级标题，不会生成目录的折叠箭头。更高级标题以此类推！（不兼容生成目录折叠箭头的编辑软件和静态网站可忽略）</p>
+<h2 id="_3">目录<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>在段落中填写 <code>[TOC]</code> 以显示全文内容的<span id="catalog"><strong>目录</strong></span>结构。</p>
+<p>大小写需看编辑器和静态网站的显示效果，而我使用的静态网站框架mkdocs必须大写。</p>
+<p>示例见文章开头（点击<a href="#top">这里</a>跳转到开头查看目录）</p>
+<h2 id="_4">段落<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="_5">加粗和倾斜<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>使用符号*和_进行内容的加粗和倾斜，可以混合使用，位置自定。</p>
+<p>口诀：<strong>单倾斜，双加粗，可混合</strong>。</p>
+<div class="language-markdown highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Markdown</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1">使用两种符号*和_
+</span><span id="__span-2-2">
+</span><span id="__span-2-3"><span class="ge">*单乘号包裹内容倾斜*</span>  
+</span><span id="__span-2-4"><span class="ge">_单横杠包裹内容倾斜_</span>  
+</span><span id="__span-2-5">
+</span><span id="__span-2-6"><span class="gs">**双乘号包裹内容加粗**</span>  
+</span><span id="__span-2-7"><span class="gs">__双横杆包裹内容加粗__</span>  
+</span><span id="__span-2-8">
+</span><span id="__span-2-9"><span class="ge">*内容**交替**使用*</span>  （这个格式中间的`**交替**`加粗显示失败）  
+</span><span id="__span-2-10"><span class="ge">_内容__交替__使用_</span>  （这个格式中间的`__交替__`加粗显示失败）  
+</span><span id="__span-2-11">
+</span><span id="__span-2-12">**内容*交替*使用**  （这个格式显示成功）  
+</span><span id="__span-2-13"><span class="gs">**内容 _交替_ 使用**</span>  （这个格式中间的`_交替_`倾斜显示失败，但在它的两边加上空格和其他内容隔开，就又能显示）  
+</span><span id="__span-2-14">
+</span><span id="__span-2-15"><span class="gs">__内容*交替*使用__</span>  （这个格式显示成功）  
+</span><span id="__span-2-16">__内容 <span class="ge">_交替_</span> 使用__  （这个格式中间的`_交替_`倾斜显示失败，但在它的两边加上空格和其他内容隔开，就又能显示）  
+</span></code></pre></div></td></tr></table></div>
+<p>显示效果如下：</p>
+<p><em>单乘号包裹内容倾斜</em></p>
+<p><em>单横杠包裹内容倾斜</em></p>
+<p><strong>双乘号包裹内容加粗</strong></p>
+<p><strong>双横杆包裹内容加粗</strong></p>
+<p><em>内容</em><em>交替</em><em>使用</em>  （这个格式中间的<code>**交替**</code>加粗显示失败）<br />
+<em>内容__交替__使用</em>  （这个格式中间的<code>__交替__</code>加粗显示失败）  </p>
+<p><strong>内容<em>交替</em>使用</strong>  （这个格式显示成功）<br />
+<strong>内容 <em>交替</em> 使用</strong>  （这个格式中间的<code>_交替_</code>倾斜显示失败，但在两边加上空格又能显示）  </p>
+<p><strong>内容<em>交替</em>使用</strong>  （这个格式显示成功）<br />
+<strong>内容 <em>交替</em> 使用</strong>  （这个格式中间的<code>_交替_</code>倾斜显示失败，但在两边加上空格又能显示）  </p>
+<blockquote>
+<p>综合以上情况得出：<br />
+1、一句话就是<strong>让字体加粗</strong>的级别比<strong>让字体倾斜</strong>要<code>高</code>，符号<code>*</code>的级别比符号<code>_</code>要<strong>高</strong>。<br />
+2、内容两边各加一个<code>*</code>或者<code>_</code>的倾斜功能，里面无法包裹两边各加两个<code>**</code>或者<code>__</code>的格式，也就是说<strong>以倾斜为主</strong>的内容里<strong>无法进行特例加粗</strong>。<br />
+3、而两边各加两个<code>**</code>或者<code>__</code>的加粗格式，却可以包裹倾斜格式的内容，但有个特例就是使用<code>_</code>这个符号进行倾斜的时候需要在两边都<strong>加上空格和其他内容隔开才显示</strong>。所以<strong>优先考虑使用的还是符号</strong><code>*</code>。  </p>
+</blockquote>
+<h3 id="_6">设置字体/颜色/字号<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>使用<code>&lt;font&gt;</code>标签包裹，face设置字体，color设置颜色，size设置字体大小，可以三个设置一起也可以单独使用。  </p>
+<p><div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1">&lt;font face=&quot;宋体&quot; color=blue size=5&gt;蓝色的字～&lt;/font&gt;
+</span></code></pre></div></td></tr></table></div>
+<font face="宋体" color=blue size=5>蓝色的字～</font></p>
+<blockquote>
+<p>注：因为我使用的静态网站主题Material for MkDocs这个主题自带的字体<a href="https://fonts.google.com/" target="_blank">Google 字体</a> 里面没有那么多字体，所以字体可能无法修改，如果想修改字体的话可能需要进行css文件配置字体链接之类的，我觉得麻烦，暂时没弄。<br />
+以后想设置了，看下这个博客参考进行设置<a href="https://ronaldln.github.io/MyPamphlet-Blog/2023/10/23/mkdocs-material/#_2" target="_blank">尝试修改 mkdocs-material 网页的字体的过程记录</a>，当然我没验证过这个方法，可能是修改整个静态网站的字体也说不定，哈哈哈  </p>
+</blockquote>
+<h4 id="_7">常用颜色<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>浏览器支持的所有颜色请跳转参考：<a href="https://htmlcolorcodes.com/zh/yanse-ming/" target="_blank">现代浏览器支持的140种已命名的颜色</a></p>
+<p>常用颜色名称:  <strong>按网站顺序排列</strong> orange pink gold yellow purple greenyellow lightgreen green aqua lightblue blue wheat brown white snow linen silver gray black </p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">最常用</th>
+<th style="text-align: center;">其他</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><font color=red>red</font></td>
+<td style="text-align: center;"><font color=greenyellow>greenyellow</font></td>
+</tr>
+<tr>
+<td style="text-align: center;"><font color=orange>orange</font></td>
+<td style="text-align: center;"><font color=lightgreen>lightgreen</font></td>
+</tr>
+<tr>
+<td style="text-align: center;"><font color=yellow>yellow</font></td>
+<td style="text-align: center;"><font color=lightblue>lightblue</font></td>
+</tr>
+<tr>
+<td style="text-align: center;"><font color=green>green</font></td>
+<td style="text-align: center;"><font color=pink>pink</font></td>
+</tr>
+<tr>
+<td style="text-align: center;"><font color=aqua>aqua</font></td>
+<td style="text-align: center;"><font color=gold>gold</font></td>
+</tr>
+<tr>
+<td style="text-align: center;"><font color=blue>blue</font></td>
+<td style="text-align: center;"><font color=silver>silver</font></td>
+</tr>
+<tr>
+<td style="text-align: center;"><font color=purple>purple</font></td>
+<td style="text-align: center;"><font color=brown>brown</font></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><font color=wheat>wheat</font></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><font color=linen>linen</font></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><font color=snow>snow</font></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><font color=gray>gray</font></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><font color=black>black</font></td>
+</tr>
+</tbody>
+</table>
+<p>补充：markdown表格是定义了表头之后，每行按照表头为基本格式进行扫描然后显示，所以每行的格式最好和表头一行保持一致。有些甚至是出现编辑软件显示而上传个人网站后不显示的情况。请看下面的栗子：</p>
+<ul>
+<li>不显示：
+  这个不显示的原因呢？就是红框里的几行多了<code>|</code>这个符号，<code>|</code>这个符号在表格里<strong>它的左边代表前一列，右边代表后一列</strong>，这里红框就是因为多了一个<code>|</code>符号把后面的内容变到第三列去了，但是表头<code>最常见|其他</code>没有定义第三列，所以不显示。</li>
+</ul>
+<p><img alt="buxianshi" src="../assets/buxianshi.jpg" /></p>
+<p>解决方法有三种：  </p>
+<p>1.直接在表头最左边添加一个<code>|</code>，变成<code>|最常见|其他</code>。</p>
+<blockquote>
+<p>这样可能又有人问了这样不就变成第2-第8行跟表头格式不一样了吗？</p>
+<p>图片表头下的2-8行：而2-8行的内容也是能显示出来的，也是因为钻了<code>|</code>这个符号在表格里的特性bug。表格是可以有第3列的，但是没有第0列，只有第1列，也就是说<strong>内容可以往后推却无法前移</strong>，而<code>|</code>符号的两边都有内容所以也给显示了出来。</p>
+<p>图片红框的5行：其实制作表格的语法原格式第一列应该是两个符号包裹着表格内容的像这样<code>|最常见|</code>，而像上面呢就是偷懒把最左边的<code>|</code>省了，因为<code>|</code>这个符号<strong>它的左边代表前一列，右边代表后一列</strong>的特性导致红框里那几行内容的格式被定义认为是第3列，从而给渲染成了第3列的内容，表头最左边加上了<code>|</code>就让这几行重新定义回第2列就可以显示出来了。</p>
+</blockquote>
+<p>2.直接删除红框里的那几行里的第一个<code>|</code>符号，让它们和表头格式一致，也就是和2-8行一致。</p>
+<p>3.就是全部都按标准格式，也就是整理版<code>|最常见|其他|</code>的那个格式写，就肯定没问题。</p>
+<ul>
+<li>显示：
+上下两个都是按照表头格式，整理版<code>|最常见|其他|</code>和 潦草版<code>最常见|其他</code>对应着一行行写的，所以都可以显示出来。  </li>
+</ul>
+<p><img alt="xianshi" src="../assets/xianshi.jpg" /></p>
+<h3 id="_8">分隔线<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>你可以在一行中用三个以上的星号、减号、底线来建立一个分隔线，你也可以在星号或是减号中间插入空格。上下两行不能有其他内容，否则可能会触发其他语法如符号 <code>-</code> 上一行有内容会<strong>被渲染为二级标题</strong>。  </p>
+<p>下面每种写法都可以建立分隔线：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>***
+
+* * *
+
+*****
+
+- - -
+
+----------
+</code></pre></div></td></tr></table></div>
+<p>显示效果如下：</p>
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<h3 id="_9">删除线<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>如果段落上的文字要添加删除线，只需要在文字的两端加上两个波浪线 ~~ 即可，实例如下：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1">其他内容
+</span><span id="__span-4-2">~~函数或其他内容~~
+</span></code></pre></div></td></tr></table></div>
+<p>显示效果如下：</p>
+<p>其他内容<br />
+~~函数或其他内容~~</p>
+<p>补充：删除线可能会有些编辑软件或者静态网站无法渲染显示出来，以下是删除线的显示对比图。
+<img alt="删除线的显示对比图" src="../assets/xianshiduibi.jpg" /></p>
+<h3 id="_10">下划线<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>下划线可以通过 HTML 的<code>&lt;u&gt;</code>标签来实现：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1">&lt;u&gt;带下划线文本&lt;/u&gt;
+</span></code></pre></div></td></tr></table></div>
+<p>显示效果如下：</p>
+<p><u>带下划线文本</u></p>
+<h3 id="_11">文本对齐方式<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p><div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1">&lt;center&gt;行中心对齐&lt;/center&gt;
+</span><span id="__span-6-2">&lt;p align=&quot;left&quot;&gt;行左对齐&lt;/p&gt;
+</span><span id="__span-6-3">&lt;p align=&quot;right&quot;&gt;行右对齐&lt;/p&gt;
+</span></code></pre></div></td></tr></table></div>
+显示效果如下：</p>
+<p><center>行中心对齐</center></p>
+<p align="left">行左对齐</p>
+<p align="right">行右对齐</p>
+
+<h3 id="_12">换行<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>不同markdown编辑器可能有不同的换行方式，最简单为直接敲回车或者使用两个以上空格加上回车。
+markdown文本内的连续两个或多个回车会被替换为一个回车。</p>
+<p><img alt="huichehuanhang" src="../assets/huichehuanhang.jpg" /></p>
+<p>如果没有添加两个空格或者回车在段落的最后面，内容渲染出来可能会和下一行连在一起，所以如果不想回车进行换行来显示出空行效果的话，最好习惯在每行的最后加两个空格。  </p>
+<p><img alt="konggehuanhang" src="../assets/konggehuanhang.jpg" /></p>
+<h3 id="_13">脚注<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>脚注是对文本的补充说明。</p>
+<p>Markdown 脚注的格式如下:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1">[^要注明的文本]
+</span></code></pre></div></td></tr></table></div>
+<p>以下实例演示了脚注的用法：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1">创建脚注格式类似这样 [^RUNOOB]。
+</span><span id="__span-8-2">
+</span><span id="__span-8-3">[^RUNOOB]: 菜鸟教程 -- 学的不仅是技术，更是梦想！！！
+</span></code></pre></div></td></tr></table></div>
+<p>演示效果如下：</p>
+<p>创建脚注格式类似这样 <sup id="fnref:RUNOOB"><a class="footnote-ref" href="#fn:RUNOOB">1</a></sup>。</p>
+<p><img alt="jiaozhu" src="../assets/jiaozhu.gif" /><br />
+点击<a href="#bottom">这里</a>跳转到结尾查看<span id="footnote"><strong>脚注</strong></span>的显示效果</p>
+<p>补充：不同编辑软件和静态网站显示的效果可能有些区别，以上传静态网站渲染后的显示为准。脚注格式定义好后，静态网站渲染出来的脚注不在原位，而是会显示到文章的最下面。</p>
+<h3 id="_14">提示框<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>添加提示框可以增强内容的可读性。</p>
+<p>语法：3个<code>!!!</code>感叹号起手，右边加标题，第二行<code>敲一个tab或者四个空格</code>之后写内容，渲染之后就可以生成一个提示框，使用空行可以断开语法，只要没有空行切断语法应该可以一直加内容。</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1">!!! 框标题
+</span><span id="__span-9-2">
+</span><span id="__span-9-3">    内容
+</span></code></pre></div></td></tr></table></div>
+<p>栗子：
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1">!!! 提示框
+</span><span id="__span-10-2">    提示框里面甚至可以放链接，代码块，可能还有别的也可以放（待验证）  
+</span><span id="__span-10-3">    &lt;https://space.bilibili.com&gt;{target=&quot;_blank&quot;}  
+</span><span id="__span-10-4">
+</span><span id="__span-10-5">    ```
+</span><span id="__span-10-6">    右边是B站[blbl](https://space.bilibili.com){target=&quot;_blank&quot;}
+</span><span id="__span-10-7">
+</span><span id="__span-10-8">    https://space.bilibili.com
+</span><span id="__span-10-9">
+</span><span id="__span-10-10">    &lt;https://space.bilibili.com&gt;{target=&quot;_blank&quot;}
+</span><span id="__span-10-11">    ```
+</span><span id="__span-10-12">
+</span><span id="__span-10-13">!!! Abstract &quot;摘要&quot;
+</span><span id="__span-10-14">    内容
+</span><span id="__span-10-15">
+</span><span id="__span-10-16">!!! Info &quot;标题&quot;
+</span><span id="__span-10-17">    内容
+</span></code></pre></div></td></tr></table></div></p>
+<p>显示效果如下：</p>
+<div class="admonition 提示框">
+<p class="admonition-title">提示框</p>
+<p>提示框里面甚至可以放代码块，可能还有别的也可以放（待验证）<br />
+<a href="https://space.bilibili.com" target="_blank">https://space.bilibili.com</a>  </p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1">右边是B站[blbl](https://space.bilibili.com){target=&quot;_blank&quot;}
+</span><span id="__span-11-2">
+</span><span id="__span-11-3">https://space.bilibili.com
+</span><span id="__span-11-4">
+</span><span id="__span-11-5">&lt;https://space.bilibili.com&gt;{target=&quot;_blank&quot;}
+</span></code></pre></div></td></tr></table></div>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">摘要</p>
+<p>内容</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">标题</p>
+<p>内容</p>
+</div>
+<blockquote>
+<p>目前收集到三种个颜色的框：<br />
+1、中文或者普通标题的<strong>深蓝色</strong>(左上角笔标)。<br />
+2、Abstract的蓝色(左上角内容标)，然后可以写其他内容作为标题，否则Abstract就会作为标题显示。<br />
+3、Info的青蓝色(左上角叹号！标)，然后可以写其他内容作为标题，否则Info就会作为标题显示。<br />
+4、只有静态网站显示，编辑软件无法显示。</p>
+</blockquote>
+<h2 id="_15">链接<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<h3 id="_16">超链接<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>1、括号[] ,里面写名字，可以和链接名字不同，但是命名建议可以做到看名知义。<br />
+2、小括号() ,里面添加跳转链接。<br />
+3、不需要其他名称的话，可以直接放链接，但是不可点击跳转，解决方式是先打出角括号&lt;&gt;在里面放链接。<br />
+4、<code>{target="_blank"}</code>是链接跳转新建标签页的语法，把这个放在<strong>链接语法的()后面</strong> 后面。（赋值链接也可以使用喔，不过赋值链接要放在变量后面。）之后显示出来的链接点击就可以新建一个标签页，而不会在原标签页直接打开链接，然后又要点击返回了。当然加不加看个人习惯，我是喜欢加上的。  </p>
+<p>语法:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1">语法：
+</span><span id="__span-12-2">[链接名称](链接地址)
+</span><span id="__span-12-3">
+</span><span id="__span-12-4">或者
+</span><span id="__span-12-5">
+</span><span id="__span-12-6">&lt;链接地址&gt;
+</span></code></pre></div></td></tr></table></div>
+<p>栗子：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1">右边是B站[blbl](https://space.bilibili.com){target=&quot;_blank&quot;}
+</span><span id="__span-13-2">
+</span><span id="__span-13-3">https://space.bilibili.com
+</span><span id="__span-13-4">
+</span><span id="__span-13-5">&lt;https://space.bilibili.com&gt;{target=&quot;_blank&quot;}
+</span></code></pre></div></td></tr></table></div>
+<p>显示效果如下所示：</p>
+<p>右边是B站链接<a href="https://space.bilibili.com" target="_blank">blbl</a></p>
+<p>https://space.bilibili.com</p>
+<p><a href="https://space.bilibili.com" target="_blank">https://space.bilibili.com</a></p>
+<p>补充：如果使用编辑软件打开此教程上面显示效果未加&lt;&gt;的链接可以跳转，是因为还没有上传静态网站渲染成为html格式。</p>
+<h3 id="_17">赋值链接<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>我们可以通过变量来设置一个链接，变量赋值在文档末尾进行：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1">这个链接用 1 作为网址变量 [B站][1]{target=&quot;_blank&quot;}
+</span><span id="__span-14-2">这个链接用 runoob 作为网址变量 [Runoob][runoob]{target=&quot;_blank&quot;}
+</span><span id="__span-14-3">
+</span><span id="__span-14-4">然后在文档的结尾为变量赋值（网址）
+</span><span id="__span-14-5">
+</span><span id="__span-14-6">[1]: https://www.bilibili.com/
+</span><span id="__span-14-7">[runoob]: http://www.runoob.com/
+</span></code></pre></div></td></tr></table></div>
+<p>显示结果如下：</p>
+<p>这个链接用 1 作为网址变量 <a href="https://www.bilibili.com/" target="_blank">B站</a><br />
+这个链接用 runoob 作为网址变量 <a href="http://www.runoob.com/" target="_blank">Runoob</a>  </p>
+<p>然后在文档的结尾为变量赋值（网址）</p>
+<blockquote>
+<p>注： <br />
+1、链接跳转新建标签页语法<code>{target="_blank"}</code>可加可不加，不过不加的话要是不小心点到链接跳转后会比较麻烦就是了。<br />
+2、变量赋值的上一行不能有内容，不然编辑软件会把地址显示出来，正常来说地址渲染之后是会隐藏的。   </p>
+</blockquote>
+<h2 id="_18">图片<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
+<h3 id="_19">简单图片<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p>语法如下：</p>
+<p><div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1">![alt 属性文本](图片地址)
+</span><span id="__span-15-2">
+</span><span id="__span-15-3">![alt 属性文本](图片地址 &quot;title可选标题&quot;)
+</span><span id="__span-15-4">
+</span><span id="__span-15-5">![alt 属性文本](图片地址){width=&quot;300&quot;}
+</span><span id="__span-15-6">
+</span><span id="__span-15-7">![alt 属性文本](图片地址 &quot;title可选标题&quot;){width=&quot;50%&quot;}
+</span></code></pre></div></td></tr></table></div>
+开头一个感叹号 !<br />
+接着一个方括号[ ] ，里面写上图片的名称<br />
+接着一个普通括号( ) ，里面放上图片的网址，最后还可以用引号""包住并加上选择性的 'title' 属性的文字。<br />
+其中图片名称会被某些网站和编辑器显示在图片下方。<br />
+而但图片语法后面的<code>{width="300"}</code>和<code>{width="50%"}</code>，是调节图片大小的语法，可以大小自定。<code>{width="300"}</code>是按宽度值进行调节，<code>{width="50%"}</code>是按宽度比例的百分比进行调节，高度按图片比例跟随宽度进行等比调节（无法以高度语法为准），自行选择格式或者不加也可以。</p>
+<p>使用实例：
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1">![RUNOOB 图标](assets/runoob-logo.png)  
+</span><span id="__span-16-2">
+</span><span id="__span-16-3">![RUNOOB 图标](assets/runoob-logo.png &quot;RUNOOB&quot;)  
+</span><span id="__span-16-4">
+</span><span id="__span-16-5">![RUNOOB 图标](assets/runoob-logo.png){width=&quot;350&quot;}  
+</span><span id="__span-16-6">
+</span><span id="__span-16-7">![RUNOOB 图标](assets/runoob-logo.png &quot;RUNOOB&quot;){width=&quot;60%&quot;}  
+</span></code></pre></div></td></tr></table></div></p>
+<p>显示结果如下：<br />
+<img alt="RUNOOB 图标" src="../assets/runoob-logo.png" />  </p>
+<p><img alt="RUNOOB 图标" src="../assets/runoob-logo.png" title="RUNOOB" />  </p>
+<p><img alt="RUNOOB 图标" src="../assets/runoob-logo.png" width="350" />  </p>
+<p><img alt="RUNOOB 图标" src="../assets/runoob-logo.png" title="RUNOOB" width="60%" />  </p>
+<blockquote>
+<p>补充：其实还可以使用内置的HTML的 <code>&lt;img&gt;</code> 标签进行调节，但是这也是看你使用的静态网站框架或者编辑软件是否能显示。很遗憾的是我使用的<strong>静态网页框架mkdocs</strong>，<strong>无法用<code>&lt;img&gt;</code>标签渲染显示出来</strong>。  </p>
+<p>语法结构如下：
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"> &lt;img src=&quot;xxx.png&quot; width = &quot;300&quot; height = &quot;200&quot; alt=&quot;图片名称&quot; align=center &gt;
+</span></code></pre></div></td></tr></table></div></p>
+<p>src是图片地址，width是宽度，height是高度，alt是图片名词，align是对齐方式。  </p>
+<p>主要是src是图片地址和width是宽度，有这两个参数就可以显示。  </p>
+</blockquote>
+<h3 id="_20">像网址那样对图片网址使用变量<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1">这个链接用 2 作为网址变量 [RUNOOB][2]{target=&quot;_blank&quot;}.  
+</span><span id="__span-18-2">这个链接用 3 作为网址变量 [RUNOOB 扩展][3]{target=&quot;_blank&quot;}.  
+</span><span id="__span-18-3">
+</span><span id="__span-18-4">然后在文档的结尾为变量赋值（网址）（赋值的图片可以是自己的文件地址，也可以是在线的图片网址http开头的）  
+</span><span id="__span-18-5">
+</span><span id="__span-18-6">[2]: assets/runoob-logo.png  
+</span><span id="__span-18-7">[3]: https://static.jyshare.com/images/runoob-logo.png  
+</span></code></pre></div></td></tr></table></div>
+<p>显示结果如下：<br />
+这个链接用 2 作为网址变量 <a href="../assets/runoob-logo.png" target="_blank">RUNOOB</a>. <br />
+这个链接用 3 作为网址变量 <a href="https://static.jyshare.com/images/runoob-logo.png" target="_blank">RUNOOB 扩展</a>.  </p>
+<p>然后在文档的结尾为变量赋值（网址）（赋值的图片可以是自己的文件地址，也可以是在线的图片网址http开头的）  </p>
+<blockquote>
+<p>注：<br />
+1、链接跳转新建标签页语法<code>{target="_blank"}</code>可加可不加，不过不加的话要是不小心点到链接跳转后会比较麻烦就是了。
+2、有些外链图片没有 token 是无法直接获取的，如果希望图片并排，删掉两个图片中间的空行。<br />
+3、变量赋值的上一行不能有内容，不然编辑软件会把地址显示出来，正常来说地址渲染之后是会隐藏的。  </p>
+</blockquote>
+<h2 id="_21">代码<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
+<h3 id="_22">代码区块<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<p>代码区块使用 4 个空格或者一个制表符（Tab 键），后写上函数或其他内容，就可以直接把一行的内容全部转换为代码，连续转换多行也可以在每行的最前面。</p>
+<p>语法：
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1">    函数或其他内容
+</span></code></pre></div></td></tr></table></div>
+补充：转换函数或段落这一行的上一行需留空，不能有函数或者字符，否则失效。  </p>
+<p>显示效果如下所示：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>函数或其他内容
+</code></pre></div></td></tr></table></div>
+<h3 id="_23">行内代码<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<p>如果是段落上的一个函数或其他内容的代码可以两边加反引号 ` 把它包起来，这个就是想转换多少为代码就包多少。（想输入这个反引号符号，要切换为输入法中文输入模式，位置在键盘左上角数字1的旁边，当然最快的还是选中内容加上编辑软件的快捷键）</p>
+<p>语法：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>`函数或其他内容`
+</code></pre></div></td></tr></table></div>
+<p>显示效果如下所示：</p>
+<p><code>函数或其他内容</code></p>
+<h3 id="_24">代码框<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<p>需在句首上一行和句尾下一行，输入三个 ` 反引号。（使用的也是反引号和行内代码是同一个，就是数量不同）</p>
+<p>代码类型的作用就是写上指定代码格式的名字，代码框里的代码会按照程序规则进行语法高亮，如 c，cpp , markdown。</p>
+<p>正确的语法格式：</p>
+<p>（1）指定</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>```markdown(代码类型，可以不指定)
+函数或其他内容
+```
+</code></pre></div></td></tr></table></div>
+<p>（2）不指定写法</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>```
+函数或其他内容
+```
+</code></pre></div></td></tr></table></div>
+<p>不完全正确的语法格式：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>```函数或其他内容```
+</code></pre></div></td></tr></table></div>
+<p>说它是不完全正确的原因是这样写也可以形成一个代码框，但是这样写只能是在一行显示，如果内容多换行了，第一行的代码或者文字就会不显示，还要浪费时间调整，一开始写对就最好了，如果要写一行以内的话还不如用上面的<strong>代码区块</strong>或者<strong>行内代码</strong>格式来写。</p>
+<h3 id="_25">代码图表<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<p>Mermaid 是一种使用文本生成流程图、饼状图、甘特图等图表的描述语言，把mermaid在代码框的第一个```的右边，把这个代码块定义为图表语言。  </p>
+<p>语法：  </p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>``` mermaid
+graph LR
+  A[Git] --&gt; B;
+  B[GitHub] --&gt; C;
+  C[在 GitHub 上共享项目] --&gt; D[确定];
+```
+</code></pre></div></td></tr></table></div>
+<p>显示效果如下：  </p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1">graph LR
+</span><span id="__span-22-2">  A[Git] --&gt; B;
+</span><span id="__span-22-3">  B[GitHub] --&gt; C;
+</span><span id="__span-22-4">  C[在 GitHub 上共享项目] --&gt; D[确定];
+</span></code></pre></div></td></tr></table></div>
+<blockquote>
+<p>静态网站无法显示可能是因为配置文件没有添加css或者js文件和yml文件功能，待完善。<br />
+参考这个博客网站：<a href="https://blog.arisa.moe/blog/2022/220407-github-pages/" target="_blank">Arisa | Blog</a></p>
+</blockquote>
+<h2 id="_26">列表<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h2>
+<p>Markdown 支持有序列表和无序列表。</p>
+<h3 id="_27">无序列表<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<p>使用星号(*)、加号(+)或是减号(-)作为列表标记，这些标记后面要添加一个空格，然后再填写内容：  </p>
+<p><div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-1">* 第一项
+</span><span id="__span-23-2">+ 第二项
+</span><span id="__span-23-3">- 第三项
+</span></code></pre></div></td></tr></table></div>
+显示结果如下：</p>
+<ul>
+<li>第一项</li>
+<li>第二项</li>
+<li>第三项</li>
+</ul>
+<h3 id="_28">有序列表<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<p>使用数字并加上点 . 来表示，点后面要跟一个空格，如：  </p>
+<p><div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-24-1">1. 第一项
+</span><span id="__span-24-2">2. 第二项
+</span><span id="__span-24-3">3. 第三项
+</span></code></pre></div></td></tr></table></div>
+显示结果如下：</p>
+<ol>
+<li>第一项</li>
+<li>第二项</li>
+<li>第三项</li>
+</ol>
+<h3 id="_29">列表嵌套<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
+<p>列表嵌套只需在子列表中的选项前面添加两个或四个空格(一个tab)即可：
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1">1. 第一项：
+</span><span id="__span-25-2">  - 第一项嵌套的第一个元素
+</span><span id="__span-25-3">    - 第一项嵌套的第二个元素
+</span><span id="__span-25-4">2. 第二项：
+</span><span id="__span-25-5">  - 第二项嵌套的第一个元素
+</span><span id="__span-25-6">    - 第二项嵌套的第二个元素
+</span></code></pre></div></td></tr></table></div></p>
+<p>显示结果如下：</p>
+<ol>
+<li>第一项：</li>
+<li>第一项嵌套的第一个元素<ul>
+<li>第一项嵌套的第二个元素</li>
+</ul>
+</li>
+<li>第二项：</li>
+<li>第二项嵌套的第一个元素<ul>
+<li>第二项嵌套的第二个元素</li>
+</ul>
+</li>
+</ol>
+<h2 id="_30">区块<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h2>
+<p>Markdown 区块引用是在段落开头使用 &gt; 符号 ，然后后面紧跟一个空格符号：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1">&gt; 区块引用  
+</span><span id="__span-26-2">&gt; 菜鸟教程  
+</span><span id="__span-26-3">&gt; 学的不仅是技术更是梦想  
+</span></code></pre></div></td></tr></table></div>
+<p>显示结果如下：</p>
+<blockquote>
+<p>区块引用<br />
+菜鸟教程<br />
+学的不仅是技术更是梦想  </p>
+</blockquote>
+<h3 id="_31">区块嵌套<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
+<p>一个 &gt; 符号是最外层，两个 &gt; 符号是第一层嵌套，以此类推：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-27-1">&gt; 最外层
+</span><span id="__span-27-2">&gt; &gt; 第一层嵌套
+</span><span id="__span-27-3">&gt; &gt; &gt; 第二层嵌套
+</span></code></pre></div></td></tr></table></div>
+<p>显示结果如下：</p>
+<blockquote>
+<p>最外层</p>
+<blockquote>
+<p>第一层嵌套</p>
+<blockquote>
+<p>第二层嵌套</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h3 id="_32">区块中使用列表<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
+<p>区块中使用列表实例如下：
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-28-1">&gt; 区块中使用列表  
+</span><span id="__span-28-2">&gt; 1. 第一项  
+</span><span id="__span-28-3">&gt; 2. 第二项  
+</span><span id="__span-28-4">&gt;
+</span><span id="__span-28-5">&gt; + 第一项  
+</span><span id="__span-28-6">&gt; + 第二项  
+</span><span id="__span-28-7">&gt; + 第三项  
+</span></code></pre></div></td></tr></table></div></p>
+<p>显示结果如下：</p>
+<blockquote>
+<p>区块中使用列表<br />
+1. 第一项<br />
+2. 第二项  </p>
+<ul>
+<li>第一项  </li>
+<li>第二项  </li>
+<li>第三项   </li>
+</ul>
+</blockquote>
+<p>注：有序列表和无序列表要使用<strong>空行隔开</strong>，否则可能<strong>无序列表语法失效不显示</strong>。</p>
+<h3 id="_33">列表中使用区块<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
+<p>如果要在列表项目内放进区块，那么就需要在 &gt; 前添加四个空格的缩进。</p>
+<p>列表中使用区块实例如下：  </p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-29-1">* 第一项  
+</span><span id="__span-29-2">
+</span><span id="__span-29-3">    &gt;菜鸟教程  
+</span><span id="__span-29-4">    &gt;学的不仅是技术更是梦想  
+</span><span id="__span-29-5">
+</span><span id="__span-29-6">* 第二项  
+</span></code></pre></div></td></tr></table></div>
+<p>显示结果如下：  </p>
+<ul>
+<li>
+<p>第一项  </p>
+<blockquote>
+<p>菜鸟教程<br />
+学的不仅是技术更是梦想  </p>
+</blockquote>
+</li>
+<li>
+<p>第二项  </p>
+</li>
+</ul>
+<p>注：区块上下都要各留一个空行和其他内容隔开，否则可能<strong>语法失效不显示</strong>。</p>
+<h2 id="_34">表格<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h2>
+<h3 id="_35">制作表格<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
+<p>使用 | 来分隔不同的单元格，使用 - 来分隔表头和其他行。</p>
+<p>第一行为表头，第二行分隔表头和主体部分(如果表格无法显示可以尝试把第二行的 - 变为 --- )，可以指定所在列的对齐方式，第三行开始每一行为一个表格行。列与列之间用 | 隔开。<br />
+(注：原生方式的表格每一行的两边都要有 | )</p>
+<p>语法格式如下：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-30-1">|  表头   | 表头  |
+</span><span id="__span-30-2">|  ----  | ----  |
+</span><span id="__span-30-3">| 单元格  | 单元格 |
+</span><span id="__span-30-4">| 单元格  | 单元格 |
+</span></code></pre></div></td></tr></table></div>
+<p>以上代码显示结果如下：</p>
+<table>
+<thead>
+<tr>
+<th>表头</th>
+<th>表头</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单元格</td>
+<td>单元格</td>
+</tr>
+<tr>
+<td>单元格</td>
+<td>单元格</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_36">表格对齐方式<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
+<p>我们可以设置表格的对齐方式：</p>
+<p>设置内容和标题栏居：<code>左对齐:-</code> <code>居中对齐:-:</code> <code>右对齐-:</code></p>
+<p>实例如下：
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-31-1">| 左对齐 | 居中对齐 | 右对齐 | 
+</span><span id="__span-31-2">| :---- | :----: | ----: |
+</span><span id="__span-31-3">| 单元格 | 单元格 | 单元格 |
+</span><span id="__span-31-4">| 单元格 | 单元格 | 单元格 |
+</span></code></pre></div></td></tr></table></div></p>
+<p>以上代码显示结果如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">左对齐</th>
+<th style="text-align: center;">居中对齐</th>
+<th style="text-align: right;">右对齐</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">单元格</td>
+<td style="text-align: center;">单元格</td>
+<td style="text-align: right;">单元格</td>
+</tr>
+<tr>
+<td style="text-align: left;">单元格</td>
+<td style="text-align: center;">单元格</td>
+<td style="text-align: right;">单元格</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_37">高级用法<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h2>
+<h3 id="_38">锚点<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h3>
+<p>也就是<code>跳转</code> ，大括号[]和小括号里加井号(# )配合，大括号显示文字，小括号里加井号写上要跳转的锚点。使用<code>&lt;span&gt;</code>标签定义id坐标锚点，<code>&gt;&lt;</code>里指的是地址显示的文字这句标签放在哪里，也就是要跳转到哪里。</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-32-1">1. [点击这里跳转到第一段](#jump1)
+</span><span id="__span-32-2">
+</span><span id="__span-32-3">2. [点击这里跳转到第二段](#jump2）
+</span><span id="__span-32-4">
+</span><span id="__span-32-5">&lt;span id=&quot;jump1&quot;&gt;第一段&lt;/span&gt;
+</span><span id="__span-32-6">
+</span><span id="__span-32-7">&lt;span id=&quot;jump2&quot;&gt;第二段&lt;/span&gt;
+</span></code></pre></div></td></tr></table></div>
+<p>栗子： <br />
+这个栗子的id是<code>now</code>用来被跳转的坐标锚点名字，<code>当前位置</code>是我让坐标锚点显示的文字，也就是<strong>目的地</strong>的地名。    <br />
+top和bottom是自带的跳转锚点，前者是跳转到<strong>最上面</strong>，后者是跳转到<strong>最下面</strong>，这两个我都把<code>这里</code>两个字设置为了点击可触发跳转的节点，也就是<strong>出发点</strong>。   </p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-33-1">&lt;span id=&quot;now&quot;&gt;当前位置&lt;/span&gt;
+</span><span id="__span-33-2">
+</span><span id="__span-33-3">点击[这里](#top)跳转到开头
+</span><span id="__span-33-4">
+</span><span id="__span-33-5">点击[这里](#bottom)跳转到结尾
+</span></code></pre></div></td></tr></table></div>
+<p>显示效果如下：</p>
+<p><span id="now">当前位置</span></p>
+<p>点击<a href="#top">这里</a>跳转到文章开头  </p>
+<p>点击<a href="#bottom">这里</a>跳转到文章结尾  </p>
+<h3 id="_39">公式<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h3>
+<ul>
+<li>在数学公式的前后加<code>$</code>是行内公式，<strong>编辑软件可能不显示，静态网站需配置css文件才能渲染显示。</strong></li>
+</ul>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-34-1">我们在初中数学课上已经对一次函数 $ y=x+a $ 有所了解。
+</span><span id="__span-34-2">
+</span><span id="__span-34-3">1、$T_4$ ，2、 $U_{ref}$ ，3、 $U^*_0$ ，4、 $I_q\_ref$ ，
+</span><span id="__span-34-4">
+</span><span id="__span-34-5">5、$|U_4| = |U_6| = \frac{2}{3}U_{dc}$
+</span><span id="__span-34-6">
+</span><span id="__span-34-7">6、 $I_a + I_b + I_c =0$
+</span><span id="__span-34-8">
+</span><span id="__span-34-9">7、**切向$I_Q$** ，8、 $\overrightarrow {U_a}$
+</span><span id="__span-34-10">
+</span><span id="__span-34-11">9、$m = \sqrt3 \cdot \frac{U_{ref}}{U_{dc}}$
+</span><span id="__span-34-12">
+</span><span id="__span-34-13">10、  
+</span><span id="__span-34-14">
+</span><span id="__span-34-15">$$
+</span><span id="__span-34-16">S_x=
+</span><span id="__span-34-17">\begin{cases}
+</span><span id="__span-34-18">1,\quad 上桥臂导通 \\[2ex]
+</span><span id="__span-34-19">0, \quad 下桥臂导通
+</span><span id="__span-34-20">\end{cases}
+</span><span id="__span-34-21">\tag{1}
+</span></code></pre></div></td></tr></table></div>
+<p>显示效果如下：</p>
+<p>我们在初中数学课上已经对一次函数 $ y=x+a $ 有所了解。  </p>
+<p>1、<span class="arithmatex">\(T_4\)</span> ，2、 <span class="arithmatex">\(U_{ref}\)</span> ，3、 <span class="arithmatex">\(U^*_0\)</span> ，4、 <span class="arithmatex">\(I_q\_ref\)</span> ，</p>
+<p>5、<span class="arithmatex">\(|U_4| = |U_6| = \frac{2}{3}U_{dc}\)</span></p>
+<p>6、 <span class="arithmatex">\(I_a + I_b + I_c =0\)</span></p>
+<p>7、<strong>切向<span class="arithmatex">\(I_Q\)</span></strong>  ， 8、 <span class="arithmatex">\(\overrightarrow {U_a}\)</span></p>
+<p>9、<span class="arithmatex">\(m = \sqrt3 \cdot \frac{U_{ref}}{U_{dc}}\)</span></p>
+<p>10、  </p>
+<div class="arithmatex">\[
+S_x=
+\begin{cases}
+1,\quad 上桥臂导通 \\[2ex]
+0, \quad 下桥臂导通
+\end{cases}
+\tag{1}
+\]</div>
+<blockquote>
+<p>1、使用了<code>_</code>符，可以把右边一个字缩小然后放到前一个字的右下角位置，但是只能缩一个。
+2、把要缩小的多个字用双引号括起来<code>{内容}</code>，就可以解决第1点只能缩一个的问题。<br />
+3、使用^符，可以把右边一个字或者符号缩小然后放到前一个字的右上角位置，相当于开方，也是只能缩一个，可以像类似第2点一样解决。<br />
+4、为了让 <code>_</code> 符号符合公式语法，而且不想缩小后面的字体，用反斜线\进行转义，像这样<code>\_</code>就可以让它只显示它本身而不执行他的功能。<br />
+5、分数的语法<code>\frac{}{}</code>，第一个{}是分子，第二个{}是分母。
+6、较简单只是做个例子。
+7、加粗符里面可以写公式的例子。
+8、向量箭头语法：<code>\overrightarrow {内容}</code>，可以在字体加一个 <code>→</code> 表示向量。<br />
+9、根号语法：<code>\sqrt</code>后面直接跟内容，语法<code>\cdot</code>是一个<code>·</code>符号后面也是跟内容。<br />
+10、分段函数的语法，开始<code>\begin{cases}</code> + 内容 +换行<code>\\</code> + 结束<code>\end{cases}</code>。<code>\tag{1}</code>是那个（1）可要可不要。</p>
+</blockquote>
+<ul>
+<li>在数学公式的前后加<code>$$</code>是独占一行的公式
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-35-1">下面我们来认识一下二次函数
+</span><span id="__span-35-2">$$ y=ax^2+bx+c $$
+</span></code></pre></div></td></tr></table></div>
+下面我们来认识一下二次函数
+$$ y=ax^2+bx+c $$</li>
+</ul>
+<hr />
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-36-1">行内公式：$\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N$
+</span><span id="__span-36-2">块级公式：
+</span><span id="__span-36-3">$$  x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$
+</span><span id="__span-36-4">
+</span><span id="__span-36-5">$$ \frac{1}{\Bigl(\sqrt{\phi \sqrt{5}}-\phi\Bigr) e^{\frac25 \pi}} =
+</span><span id="__span-36-6">1+\frac{e^{-2\pi}} {1+\frac{e^{-4\pi}} {1+\frac{e^{-6\pi}}
+</span><span id="__span-36-7">{1+\frac{e^{-8\pi}} {1+\ldots} } } } $$
+</span></code></pre></div></td></tr></table></div>
+<p>行内公式：<span class="arithmatex">\(\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N\)</span></p>
+<p>块级公式：</p>
+<div class="arithmatex">\[x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}\]</div>
+<div class="arithmatex">\[\frac{1}{\Bigl(\sqrt{\phi \sqrt{5}}-\phi\Bigr) e^{\frac25 \pi}} = 1+\frac{e^{-2\pi}} {1+\frac{e^{-4\pi}} {1+\frac{e^{-6\pi}}{1+\frac{e^{-8\pi}} {1+\ldots} } } }\]</div>
+<p>补充：更多公式参考<a href="https://blog.csdn.net/weixin_42782150/article/details/104878759" target="_blank">史上最全Markdown公式、符号总结！！</a></p>
+<h2 id="_40">其他<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h2>
+<h3 id="_41">转义字符<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h3>
+<p>通过在Markdown字符前使用\来忽略（或转义）Markdown格式。</p>
+<p>Markdown允许您使用反斜杠转义来生成文字字符，否则这些字符在Markdown的格式化语法中具有特殊含义。 例如，如果您想用文字星号包围一个单词，则可以在星号之前使用反斜杠，如<code>\*literal asterisks\*</code>  *literal asterisks*</p>
+<p>Markdown为以下字符提供反斜杠转义(但是CSDN不太支持)：</p>
+<p>\反斜杠 `反引号 *星号 _下划线 {}大括号 []中括号 ()小括号  #井号 +加号 -减号 .英文句号 !英文感叹号</p>
+<h3 id="html">内联 HTML 语法/特殊字符自动转义<a class="headerlink" href="#html" title="Permanent link">&para;</a></h3>
+<p>对于 Markdown 中未包含的标签, 可以直接使用 HTML标签，例如用 HTML <code>&lt;a&gt;</code> 标签替代 Markdown 的链接语法</p>
+<p>在 HTML 中, 有一些字符需要特殊对待，如果你想将它们用作字面量, 则需要将它们转义为字符实体</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">特殊字符</th>
+<th style="text-align: center;">代码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">&amp;</td>
+<td style="text-align: center;"><code>&amp;amp;</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">&lt;</td>
+<td style="text-align: center;"><code>&amp;lt;</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">&gt;</td>
+<td style="text-align: center;"><code>&amp;gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">&quot;</td>
+<td style="text-align: center;"><code>&amp;quot;</code> <code>&amp;#34;</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">&apos;</td>
+<td style="text-align: center;"><code>&amp;apos;</code> <code>&amp;#39;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_42">注释<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-37-1">&lt;div style=&#39;display: none&#39;&gt;
+</span><span id="__span-37-2">注释
+</span><span id="__span-37-3">&lt;/div&gt;
+</span></code></pre></div></td></tr></table></div>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-38-1">&lt;!-- 注释 --&gt;
+</span></code></pre></div></td></tr></table></div>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-39-1">[//]: # (哈哈我是最强注释1，不会在浏览器中显示。)
+</span><span id="__span-39-2">[^_^]: # (哈哈我是最萌注释2，不会在浏览器中显示。)
+</span></code></pre></div></td></tr></table></div>
+<h3 id="_43">空格<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-40-1">【1】 &amp;nbsp; 半角的不断行的空白格（推荐使用）
+</span><span id="__span-40-2">【2】 &amp;ensp; 半角的空格
+</span><span id="__span-40-3">【3】 &amp;emsp; 全角的空格
+</span></code></pre></div></td></tr></table></div>
+<ul>
+<li>【1】 &nbsp; 半角的不断行的空白格（推荐使用）  </li>
+<li>【2】 &ensp; 半角的空格  </li>
+<li>【3】 &emsp; 全角的空格  </li>
+</ul>
+<hr />
+<blockquote>
+<p><span id="bottom"><strong>文章结尾</strong></span></p>
+</blockquote>
+<p>点击<a href="#now">这里</a>回到介绍锚点 <code>跳转</code> 的阅读位置</p>
+<p>点击<a href="#footnote">这里</a>回到介绍 <code>脚注</code> 的阅读位置</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:RUNOOB">
+<p>菜鸟教程 -- 学的不仅是技术，更是梦想！！！&#160;<a class="footnote-backref" href="#fnref:RUNOOB" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      林海城 CC-BY-4.0
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/lin-haicheng" target="_blank" rel="noopener" title="GitHub | lin-haicheng" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://space.bilibili.com/288338838" target="_blank" rel="noopener" title="Bilibili | 彼岸LiH" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M488.6 104.1c16.7 18.1 24.4 39.7 23.3 65.7v202.4c-.4 26.4-9.2 48.1-26.5 65.1-17.2 17-39.1 25.9-65.5 26.7H92.02c-26.45-.8-48.21-9.8-65.28-27.2C9.682 419.4.767 396.5 0 368.2V169.8c.767-26 9.682-47.6 26.74-65.7C43.81 87.75 65.57 78.77 92.02 78h29.38L96.05 52.19c-5.75-5.73-8.63-13-8.63-21.79 0-8.8 2.88-16.06 8.63-21.797C101.8 2.868 109.1 0 117.9 0q13.2 0 21.9 8.603L213.1 78h88l74.5-69.397C381.7 2.868 389.2 0 398 0q13.2 0 21.9 8.603c5.7 5.737 8.6 12.997 8.6 21.797 0 8.79-2.9 16.06-8.6 21.79L394.6 78h29.3c26.4.77 48 9.75 64.7 26.1m-38.8 69.7c-.4-9.6-3.7-17.4-10.7-23.5-5.2-6.1-14-9.4-22.7-9.8H96.05c-9.59.4-17.45 3.7-23.58 9.8-6.14 6.1-9.4 13.9-9.78 23.5v194.4c0 9.2 3.26 17 9.78 23.5s14.38 9.8 23.58 9.8H416.4c9.2 0 17-3.3 23.3-9.8s9.7-14.3 10.1-23.5zm-264.3 42.7c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.2 6.3-14 9.5-23.6 9.5s-17.5-3.2-23.6-9.5-9.4-14-9.8-23.2v-33.3c.4-9.1 3.8-16.9 10.1-23.2s13.2-9.6 23.3-10c9.2.4 17 3.7 23.3 10m191.5 0c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2s-14 9.5-23.6 9.5-17.4-3.2-23.6-9.5c-7-6.3-9.4-14-9.7-23.2v-33.3c.3-9.1 3.7-16.9 10-23.2s14.1-9.6 23.3-10c9.2.4 17 3.7 23.3 10"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="None" target="_blank" rel="noopener" title="qq群" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M433.754 420.445c-11.526 1.393-44.86-52.741-44.86-52.741 0 31.345-16.136 72.247-51.051 101.786 16.842 5.192 54.843 19.167 45.803 34.421-7.316 12.343-125.51 7.881-159.632 4.037-34.122 3.844-152.316 8.306-159.632-4.037-9.045-15.25 28.918-29.214 45.783-34.415-34.92-29.539-51.059-70.445-51.059-101.792 0 0-33.334 54.134-44.859 52.741-5.37-.65-12.424-29.644 9.347-99.704 10.261-33.024 21.995-60.478 40.144-105.779C60.683 98.063 108.982.006 224 0c113.737.006 163.156 96.133 160.264 214.963 18.118 45.223 29.912 72.85 40.144 105.778 21.768 70.06 14.716 99.053 9.346 99.704"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="None" target="_blank" rel="noopener" title="微信" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M385.2 167.6c6.4 0 12.6.3 18.8 1.1C387.4 90.3 303.3 32 207.7 32 100.5 32 13 104.8 13 197.4c0 53.4 29.3 97.5 77.9 131.6l-19.3 58.6 68-34.1c24.4 4.8 43.8 9.7 68.2 9.7 6.2 0 12.1-.3 18.3-.8-4-12.9-6.2-26.6-6.2-40.8-.1-84.9 72.9-154 165.3-154m-104.5-52.9c14.5 0 24.2 9.7 24.2 24.4 0 14.5-9.7 24.2-24.2 24.2-14.8 0-29.3-9.7-29.3-24.2.1-14.7 14.6-24.4 29.3-24.4m-136.4 48.6c-14.5 0-29.3-9.7-29.3-24.2 0-14.8 14.8-24.4 29.3-24.4 14.8 0 24.4 9.7 24.4 24.4 0 14.6-9.6 24.2-24.4 24.2M563 319.4c0-77.9-77.9-141.3-165.4-141.3-92.7 0-165.4 63.4-165.4 141.3S305 460.7 397.6 460.7c19.3 0 38.9-5.1 58.6-9.9l53.4 29.3-14.8-48.6C534 402.1 563 363.2 563 319.4m-219.1-24.5c-9.7 0-19.3-9.7-19.3-19.6 0-9.7 9.7-19.3 19.3-19.3 14.8 0 24.4 9.7 24.4 19.3 0 10-9.7 19.6-24.4 19.6m107.1 0c-9.7 0-19.3-9.7-19.3-19.6 0-9.7 9.7-19.3 19.3-19.3 14.5 0 24.4 9.7 24.4 19.3.1 10-9.9 19.6-24.4 19.6"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="None" target="_blank" rel="noopener" title="小红书 | 林海城" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M160 32c-35.3 0-64 28.7-64 64v224c0 35.3 28.7 64 64 64h352c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm236 106.7 96 144c4.9 7.4 5.4 16.8 1.2 24.6S480.9 320 472 320H200c-9.2 0-17.6-5.3-21.6-13.6s-2.9-18.2 2.9-25.4l64-80c4.6-5.7 11.4-9 18.7-9s14.2 3.3 18.7 9l17.3 21.6 56-84c4.5-6.6 12-10.6 20-10.6s15.5 4 20 10.7M192 128a32 32 0 1 1 64 0 32 32 0 1 1-64 0m-144-8c0-13.3-10.7-24-24-24S0 106.7 0 120v224c0 75.1 60.9 136 136 136h320c13.3 0 24-10.7 24-24s-10.7-24-24-24H136c-48.6 0-88-39.4-88-88z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="None" target="_blank" rel="noopener" title="打赏支持" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M96 64c0-17.7 14.3-32 32-32h384c70.7 0 128 57.3 128 128s-57.3 128-128 128h-32c0 53-43 96-96 96H192c-53 0-96-43-96-96zm384 160h32c35.3 0 64-28.7 64-64s-28.7-64-64-64h-32zM32 416h512c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+        <script src="../../../mkdocs/javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

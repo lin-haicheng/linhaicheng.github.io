@@ -1,0 +1,3674 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="林海城的个人网站">
+      
+      
+        <meta name="author" content="林海城">
+      
+      
+        <link rel="canonical" href="https://lin-haicheng.github.io/LECTURE/Foc/foc/">
+      
+      
+        <link rel="prev" href="../../MKdocs/mkdocs/">
+      
+      
+        <link rel="next" href="../../Systems/systems/">
+      
+      
+      <link rel="icon" href="https://pic1.imgdb.cn/item/6796529ad0e0a243d4f81f4d.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+    
+    
+      
+        <title>深入浅出讲解FOC算法与SVPWM技术(稚晖君) - 忆个小破站</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7758b05.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+      <link rel="stylesheet" href="../../../mkdocs/css/no-footer.css">
+    
+      <link rel="stylesheet" href="../../../mkdocs/css/unordered-list-symbols.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#focsvpwm" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="忆个小破站" class="md-header__button md-logo" aria-label="忆个小破站" data-md-component="logo">
+      
+  <img src="https://pic1.imgdb.cn/item/6796529ad0e0a243d4f81f4d.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            忆个小破站
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              深入浅出讲解FOC算法与SVPWM技术(稚晖君)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lin-haicheng/lin-haicheng.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    lin-haicheng.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ME/" class="md-tabs__link">
+          
+  
+    
+  
+  我
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../BOOK/" class="md-tabs__link">
+          
+  
+    
+  
+  读书
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ESSAY/" class="md-tabs__link">
+          
+  
+    
+  
+  文笔
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  讲稿
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../BLOG/" class="md-tabs__link">
+          
+  
+    
+  
+  博客
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../DEV/" class="md-tabs__link">
+          
+  
+    
+  
+  开发
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../RESEARCH/" class="md-tabs__link">
+          
+  
+    
+  
+  研究
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../REPRODUCE/" class="md-tabs__link">
+          
+  
+    
+  
+  转载
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../WEBSITE/" class="md-tabs__link">
+          
+  
+    
+  
+  网站
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="忆个小破站" class="md-nav__button md-logo" aria-label="忆个小破站" data-md-component="logo">
+      
+  <img src="https://pic1.imgdb.cn/item/6796529ad0e0a243d4f81f4d.png" alt="logo">
+
+    </a>
+    忆个小破站
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lin-haicheng/lin-haicheng.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    lin-haicheng.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ME/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    我
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            我
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../BOOK/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    读书
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            读书
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ESSAY/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    文笔
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            文笔
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    文章
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            文章
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ESSAY/Articles/memory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    记忆
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ESSAY/Articles/study/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    学习
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ESSAY/Articles/science/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    科学
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ESSAY/Articles/try/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    尝试
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    随笔
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            随笔
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ESSAY/Jottings/0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    开始
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    讲稿
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            讲稿
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    English
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            English
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../YuYan/English/pronunciation/pronunciation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    音标
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../YuYan/English/vocabulary/vocabulary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    词汇
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../YuYan/English/grammar/grammar/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    语法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    C++
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            C++
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Programming/C%2B%2B/C%2B%2B_learning-phase/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    学习阶段
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Programming/C%2B%2B/C%2B%2B_Begin/C%2B%2B_Begin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    入门
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Programming/C%2B%2B/C%2B%2B_core/C%2B%2B_core/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    核心
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Programming/C%2B%2B/C%2B%2B_raise/C%2B%2B_raise/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    提高
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    linux
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/commands-concise/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    命令行精简版
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    git
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            git
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Git/git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    github
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            github
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Git/GitHub/github-pages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GitHub Pages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MKdocs/mkdocs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mkdocs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    FOC
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            FOC
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    深入浅出讲解FOC算法与SVPWM技术(稚晖君)
+    
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Systems/systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    操作系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Systems/ros/ros/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ROS(机器人操作系统)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../BLOG/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    博客
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            博客
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Markdown
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Markdown
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/Markdown/markdown-grammar/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Markdown语法学习
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/Markdown/latex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Latex常用符号整理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/Markdown/vscode-extension/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VScode安装和插件
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/Linux/vim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim 学习笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/Linux/tmux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    tmux 使用指南
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/Linux/unix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unix and Linux
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/Linux/pi-start/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    树莓派入门指南
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    macOS
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            macOS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/macOS/editing-skills/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    文字编辑技巧
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/macOS/zoom/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    放大镜
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/macOS/tree/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    macOS 使用 tree 命令和访达进行任务管理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/macOS/stream/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mac 使用 OBS 直播
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/macOS/intel-windows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intel Mac Windows 10 安装
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数学
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            数学
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/Maths/elementary_arithmetic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    加减乘除
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/Maths/linear/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    线性代数复习笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    物理
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            物理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/Physics/electromagnetics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    物理电磁学笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    电子
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            电子
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/Electron/%E8%BF%9B%E5%88%B6%E6%8D%A2%E7%AE%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    进制换算
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    电子工程
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            电子工程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/ElectronicEngineering/rlc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    电路方程 | 二阶线性时不变电路方程列写及五要素法总结
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/ElectronicEngineering/storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    存储器及各种存储器间的关系
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/ElectronicEngineering/verilog-simulation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Verilog 仿真流程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/ElectronicEngineering/yosys-try/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    yosys 简单入门
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../DEV/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    开发
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            开发
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../RESEARCH/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    研究
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            研究
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    地理
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            地理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../RESEARCH/DiLi/zhongguo/zhongguo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    中国
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../REPRODUCE/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    转载
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            转载
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    文章
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            文章
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../REPRODUCE/article/my-best-teacher/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    我最好的老师
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../REPRODUCE/article/how-to-ask-questions-the-smart-way/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    提问的智慧
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../WEBSITE/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    网站
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            网站
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WEBSITE/Link/link/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    网站链接
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_3" id="__nav_9_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    网站构建
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_3">
+            <span class="md-nav__icon md-icon"></span>
+            网站构建
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WEBSITE/Build/build/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    介绍
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WEBSITE/Build/qitabuild/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    其他
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_4" id="__nav_9_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    MAC
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_4">
+            <span class="md-nav__icon md-icon"></span>
+            MAC
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WEBSITE/Mac/macbibei/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MAC开发必备
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WEBSITE/Mac/macsousuo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MAC软件搜索网站
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/lin-haicheng/lin-haicheng.github.io/edit/main/docs/LECTURE/Foc/foc.md" title="编辑此页" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="focsvpwm">深入浅出讲解FOC算法与SVPWM技术<a class="headerlink" href="#focsvpwm" title="Permanent link">&para;</a></h1>
+<p><strong>0.前言</strong></p>
+<p>最近想做一个机器人项目，设计中需要用到高性能超小体积的伺服电机。</p>
+<p>电机这一块性能满足项目需求的基本上只有<code>无刷电机</code>可以选了--又要大功率、大扭矩，又要体积小，成本还最好不要太高，选择低KV值的无刷电机显然是最合适的。我预计的方案中计划把减速器也省略了，采用<code>扭矩无刷电机</code>直驱。那么作为机器人硬件三大核心部件（<strong>电机、减速器、驱动器</strong>）之一的驱动器，我感觉是有必要自己设计一下的，因此这里把我学习FOC过程中看到的一些有关无刷电机<code>矢量控制</code>的资料和个人理解整理分享出来。</p>
+<blockquote>
+<p>本人非自控/电控专业，如文章有疏漏欢迎指出~</p>
+</blockquote>
+<p><strong>0.1 什么是FOC？</strong></p>
+<p><strong>FOC（Field-Oriented Control）</strong>，直译是<code>磁场定向控制</code>，也被称作矢量控制（VC，Vector Control），是目前<code>无刷直流电机</code>（BLDC）和<code>永磁同步电机</code>（PMSM）高效控制的最优方法之一。FOC旨在通过精确地控制磁场大小与方向，使得电机的运动转矩<strong>平稳、噪声小、效率高</strong>，并且具有高速的动态响应。</p>
+<p>简单来说就是，FOC是一种对无刷电机的驱动控制方法，它可以让我们对无刷电机进行“<strong>像素级</strong>”控制，实现很多传统<code>电机控制</code>方法所无法达到的效果~</p>
+<p><strong>0.2 FOC驱动器和无刷电调的区别</strong></p>
+<p>玩过航模的同学可能对无刷电机很熟悉，也应该知道航模中对于无刷电机的驱动使用的是 <strong>电子调速器（ESC）</strong> 也就是我们常说的电调，那么这个FOC驱动器和普通的电调有什么区别呢？</p>
+<p><img alt="" src="../assets/%E7%94%B5%E8%B0%83.jpg" /></p>
+<blockquote>
+<p><center>航模中的无刷电调</center></p>
+</blockquote>
+<p><strong>FOC的优势：</strong></p>
+<p>1.<strong>低转速下控制</strong><br />
+由于控制原理的区别，无刷电调只能控制电机工作在高转速下，低速下很难控制；而FOC控制器则完全没有这个限制，不论在什么转速下都可以实现精确控制。<br />
+2.<strong>电机换向</strong><br />
+同上面的理由，由于无感电调无法反馈转子位置，因此很难实现电机正反转的换向；而FOC驱动器的换向性能极其优秀，最高转速下正反转切换可以非常顺畅；此外FOC还可以以能量回收的形式进行刹车控制。<br />
+3.<strong>力矩控制</strong><br />
+普通电调都只能控制电机转速，而FOC可以进行电流（力矩）、速度、位置三个闭环控制。<br />
+4.<strong>噪音</strong><br />
+FOC驱动器的噪音会比电调小很多，原因是普通电调采用方波驱动，而FOC是正弦波。  </p>
+<p><strong>电调的优势：</strong></p>
+<p>1.<strong>兼容性</strong><br />
+电调驱动不同的BLDC不需要进行参数整定，而FOC需要。<br />
+2.<strong>算法复杂度</strong><br />
+电调的算法实现更简单，运算量少，很适合需要提高带宽的超高转速电机。<br />
+3.<strong>成本</strong><br />
+电调的成本比FOC低很多。  </p>
+<p>综上大家应该可以看出来，FOC驱动器在控制性能上是要比电调强大得多的，其优异的性能和<strong>磁场定向控制</strong>的原理是密不可分的，下面就会详细介绍FOC控制的实现方法。</p>
+<p><strong>1.从电机原理说起</strong></p>
+<p><strong>1.1 一些基础知识</strong></p>
+<p>1.<strong>左手定则</strong><br />
+用于判断导线在磁场中受力的方向：伸开左手，使拇指与其他四指垂直且在一个平面内，让磁感线从手心流入，四指指向电流方向，大拇指指向的就是<code>安培力方向</code>（即导体受力方向）。</p>
+<p><img alt="" src="../assets/%E5%B7%A6%E6%89%8B%E5%AE%9A%E5%88%99.jpg" /></p>
+<p>2.<strong>右手定则</strong><br />
+伸开右手，使大拇指跟其余四个手指垂直并且都跟手掌在一个平面内，把右手放入磁场中，让磁感线垂直穿入手心，大拇指指向导体运动方向，则其余四指指向<code>感生电动势</code>的方向。也就是<code>切割磁感线</code>的导体会产生<code>反电动势</code>，实际上通过反电动势定位转子位置也是普通无感电调工作的基础原理之一  </p>
+<p><img alt="" src="../assets/%E5%8F%B3%E6%89%8B%E5%AE%9A%E5%88%99.jpg" /></p>
+<p>3.<strong>右手螺旋定则（即安培定则）</strong><br />
+用于判断通电线圈判断极性：用右手握螺线管，让四指弯向螺线管中电流方向，大拇指所指的那端就是螺线管的N极。直线电流的磁场的话，大拇指指向电流方向，另外四指弯曲指的方向为磁感线的方向。</p>
+<p><img alt="" src="../assets/%E5%8F%B3%E6%89%8B%E8%9E%BA%E6%97%8B%E5%AE%9A%E5%88%99.jpg" /></p>
+<p>4.PWM（脉冲宽度调制）</p>
+<p><img alt="" src="../assets/%E8%84%89%E5%86%B2%E5%AE%BD%E5%BA%A6%E8%B0%83%E5%88%B6.jpg" /></p>
+<blockquote>
+<p><center>不同占空比的PWM波形</center></p>
+</blockquote>
+<p>本质是利用<code>面积等效原理</code>来改变波形的有效值。举个例子，一个电灯只有<strong>开</strong>和<strong>关</strong>两个状态，那么要怎么让它实现<strong>50%亮度</strong>的效果的呢？只需要让它在一半时间<strong>开</strong>，一半时间<strong>关</strong>，交替执行这两个动作只要频率足够高，在人眼（<code>低通滤波器</code>）看起来就是<strong>50%亮度</strong>的样子了。而其中高电平占一个开关周期的比例，就叫做<strong>占空比</strong>。利用PWM可以实现使用离散的开关量来模拟连续的电压值。</p>
+<p><strong>1.2 无刷电机原理</strong></p>
+<p>考察下图情况中的<strong>直流电机基本模型</strong>，根据磁极异性相吸同性相斥的原理，中间永磁体在两侧电磁铁的作用下会被施加一个力矩并发生旋转，这就是电机驱动的基本原理：  </p>
+<p><img alt="" src="../assets/%E6%97%A0%E5%88%B7%E7%94%B5%E6%9C%BA%E5%8E%9F%E7%90%86.jpg" /></p>
+<p>对于简化的无刷电机来说，以<strong>三相二极内转子电机</strong>为例，定子的<strong>三相绕组</strong>有<code>星形联结</code>方式和<code>三角联结</code>方式，而 <strong>三相星形联结的<code>二二导通</code></strong> 方式最为常用，这里就用该模型来做个简单分析：</p>
+<p><img alt="" src="../assets/%E4%B8%89%E7%9B%B8%E6%98%9F%E5%BD%A2%E8%81%94%E7%BB%93.jpg" /></p>
+<p>如上图所示，无刷电机三相的连接方式是<strong>每一相引出导线的一头</strong>，而<strong>另一头和其他相两两相连</strong>。这个情况下假如我们对<code>A、B极</code>分别施加正电压和负电压，那么由<code>右手螺旋定则</code>可以判断出线圈磁极的方向如下图：</p>
+<p><img alt="" src="../assets/AB%E9%80%9A%E7%94%B5%E6%83%85%E5%BD%A2.jpg" /></p>
+<blockquote>
+<p>思考一下这时候中间的转子处于什么角度的时候收到的<strong>力矩最大</strong>呢？</p>
+</blockquote>
+<p>没错就是和CO（O为中心点）连线平行的时候，磁铁会受到A、B两个磁极一推一拉的作用，直到旋转到与AB连线平行的且磁铁<strong>内部磁力线</strong>方向和<code>AB间磁力线</code>方向一致的时候，受合力矩为0且稳定，也就是上图中右边的状态。换句话说，<strong>AB相通电会让转子努力转到上图中右边的状态</strong>。至于C这时暂时不起作用。</p>
+<p>同理，我们下一阶段换成AC相通电，这时候转子会倾向于转到下图右边水平的角度：</p>
+<p><img alt="" src="../assets/AC%E7%9B%B8%E9%80%9A%E7%94%B5.jpg" /></p>
+<p>然后BC相通电：</p>
+<p><img alt="" src="../assets/BC%E7%9B%B8%E9%80%9A%E7%94%B5.jpg" /></p>
+<p>...</p>
+<p>以此类推，可以得到每个通电状态下转子的角度，就是下图中的6个状态，每个状态相隔60度，6个过程即完成了完整的转动，共进行了<strong>6次换相</strong>：</p>
+<p><img alt="" src="../assets/6%E6%AC%A1%E6%8D%A2%E7%9B%B8.jpg" /></p>
+<p>整个过程就好像骑在毛驴上吊一根胡萝卜一样，旋转的磁场牵引着永磁体不断旋转：  </p>
+<p><img alt="" src="../assets/%E6%97%8B%E8%BD%AC%E7%9A%84%E7%A3%81%E5%9C%BA%E7%89%B5%E5%BC%95%E7%9D%80%E6%B0%B8%E7%A3%81%E4%BD%93%E4%B8%8D%E6%96%AD%E6%97%8B%E8%BD%AC.jpg" /></p>
+<p>而这个<strong>换向的操作，就是需要驱动器</strong>去完成的。</p>
+<p>这也是<strong>无刷电机</strong>和<code>有刷电机</code>最大的区别，即不像有刷电机的机械换向，无刷电机是通过电子换向来驱动转子不断地转动，电机的电压和KV值决定了电机转速，而电机的转速就决定了换向的频率。</p>
+<p><strong>至于什么时候怎么知道该换到哪个供电相？如何产生更平滑的换向电压？如何提高电源的利用效率？这些都是FOC控制方法要探讨和解决的问题。</strong></p>
+<p><strong>1.3 关于BLDC和PMSM的区别</strong></p>
+<p>无刷电机其实可以分为<strong>无刷直流电机（BLDC，我们航模上都是用这种）</strong> 和<strong>永磁同步电机（PMSM）</strong>，结构大同小异，主要区别在于制造方式（线圈绕组方式）不同导致的一些特性差异（比如反电动势的波形）。</p>
+<p>从上面分析的无刷电机模型其实可以看到，由于转子在磁场中只有6个稳定的状态，因此旋转过程其实是不平滑的，存在扭矩的抖动（没有通电的时候可以用手转一下无刷电机，会感受到这种“颗粒感”）。因此为了解决这个问题，从“硬件”和从“软件”出发有两个解决方案，这就衍生出了<strong>BLDC</strong>和<strong>PMSM</strong>的区别。</p>
+<p>简单地说，BLDC由于反电动势接近梯形波，所以肯定是会有上面说的抖动问题的，但是转一圈抖6下太明显了，如果我增加<code>电机槽</code>、<code>极对数</code>（也就是磁铁对数），那以前是360度里面抖6下，现在变成120度里面抖6下，甚至更小，这样“颗粒感”不就变得更小了嘛？实际中买到的BLDC电机基本都是<strong>多极对</strong>的（比如下图），原理跟之前的分析是一样的，出来的都是三相信号（图中的三根线），可以自己进行类推。BLDC也可以结合<code>抗齿槽算法</code>的FOC进行力矩补偿实现平滑控制。</p>
+<p><img alt="" src="../assets/BLDC%E7%94%B5%E6%9C%BA.jpg" /></p>
+<p>而另一方面，为什么我们非得用<strong>方波</strong>这种不平滑的波来驱动电机呢，用<strong>正弦波</strong>它不香吗？是的，这就是PMSM解决问题的方式，由于PMSM的反电动势被设计为<strong>正弦波</strong>的形状，我们用<strong>软件和算法</strong>结合<strong>PWM技术</strong>将方波转变成等效的<code>SPWM正弦波</code>或者<code>SVPWM马鞍波</code>，再来驱动电机，结果美滋滋，控制效果很理想。当然为了产生更好的波形、更好的旋转磁场，驱动器、控制算法就变得非常复杂，这也是<strong>FOC的实现原理，后面会进行详细介绍。</strong></p>
+<p><strong>1.3 驱动电路实现</strong></p>
+<p>无刷电机的驱动电路主要使用<code>三相逆变电路</code>来实现，如下图：</p>
+<p><img alt="" src="../assets/%E4%B8%89%E7%9B%B8%E9%80%86%E5%8F%98%E7%94%B5%E8%B7%AF.jpg" /></p>
+<p>所谓<strong>逆变电路</strong>，即把<strong>直流电</strong>变换为<strong>交流电</strong>，或者简单点说就是一个可以产生不同电流流向的电路，通过前面的电机模型分析我们也可以看出，对于无刷电机的驱动是需要在不同时刻施加不同方向的电压（电流）的，因此需要逆变电路。</p>
+<p>而逆变电路具体的实现则一般是采用<strong>半桥MOS电路</strong>来制作的。半桥电路的原型如下，其实很简单，就是两个<code>MOS管</code>组成的<strong>上桥臂</strong>和<strong>下桥臂</strong>，中间引出一条输出线：</p>
+<p><img alt="" src="../assets/%E5%8D%8A%E6%A1%A5MOS%E7%94%B5%E8%B7%AF.jpg" /></p>
+<p>用3个半桥电路就可以组合成三相逆变电路，每个半桥引出的一根输出线跟无刷电机的一根相线相连，就完成了最基本的无刷驱动电路。</p>
+<p>原理方面，MOS管可以看作电压控制的高速电子开关，在MOS管的栅极（上图中的High Drive和Low Drive）施加高电平或者低电平，就可以控制MOS源极和漏极的导通或者关闭。比如在下图中，我们打开第一组半桥的上桥臂、第二组和第三组半桥的下桥臂（其余的关闭），那么就可以让电流<strong>从电源正极流过电机的a相，流经b、c相，然后回到电源负极：</strong></p>
+<p><img alt="" src="../assets/%E4%B8%89%E7%9B%B8%E9%80%86%E5%8F%98%E9%A9%B1%E5%8A%A8%E7%94%B5%E8%B7%AF.jpg" /></p>
+<blockquote>
+<p><center>三相逆变驱动电路</center>  </p>
+</blockquote>
+<p>于是通过控制三个半桥的不同开关状态，我们可以控制电流在电机中的不同流向了。</p>
+<blockquote>
+<p><strong>注意</strong>，在这个电路中，每个状态下电机的三相线圈都会有电流；而在上一节的示例中我们同一时刻只会让两相线圈有电流，另一相不起作用。<br />
+那么这么修改的原因是啥呢？当然是：<strong>浪费可耻啊~</strong><br />
+浪费一相不用那不就白白损失了一部分扭矩嘛？通过上图中的方式驱动原理也是和之前分析一致的，但是可以产生更大的扭矩，所以当然是更好的选择啦。  </p>
+</blockquote>
+<p>接下来我们将半桥电路的状态做一个编码，首先限定一个半桥只有两种状态：</p>
+<ul>
+<li>上桥开通下桥关断定义为状态1  </li>
+<li>上桥关断下桥开通定义为状态0</li>
+</ul>
+<p>这样，三组半桥就一共有8种组合方式，编码分别为：<strong>000、001、010、011、100、101、110、111，</strong> 记住这点，后面会用上~</p>
+<blockquote>
+<p><strong>可能有人会问，为什么一个半桥只能上桥臂和下桥臂有一个导通呢？都关闭或者都导通不行？？</strong><br />
+害，仔细想想就知道，<strong>上下都导通</strong>显然是不可能的，因为这就相当于把电源短路了啊...<br />
+那<strong>上下都断开</strong>呢？也不需要，因为这样就回到前面提到的，这时候电机有一相不起作用，浪了个费。<br />
+实际上半桥驱动电路的实现会比上面的分析要复杂一些，比如需要考虑开关管的<code>开关频率、开启和关断时间不对称、死区问题</code>等等，我后面设计的FOC驱动使用的是专用的半桥MOS栅极驱动IC来实现的。  </p>
+</blockquote>
+<p><strong>1.4 旋转的三相电机波形</strong></p>
+<p>按照前面的无刷电机基本模型，假设我们拿到这样一个电机，<strong>手动匀速转动它的转子，然后用示波器观察它的三相输出电压（也就是反电动势产生的电压）</strong>，会看到什么波形呢？</p>
+<p>其实很自然可以想到，我们会得到<strong>3根正弦曲线</strong>，而且三根曲线两两<code>相位差</code>为120°：</p>
+<p><img alt="" src="../assets/%E6%AD%A3%E5%BC%A6%E9%87%8F%E7%9A%84%E7%9B%B8%E5%BA%8F.jpg" /></p>
+<blockquote>
+<p>实际上三相发电机的发电原理就是这样的，输出的就是三相幅值为220V的交流电（线电压为380V，即<span class="arithmatex">\(\sqrt3*220\)</span> V）。</p>
+</blockquote>
+<p><strong>发电机反过来就是电动机啦</strong>，所以假如反过来我们在三相无刷电机的三相线圈上输入上述三相正弦电压，那么就可以驱动无刷电机平稳高效地旋转了。</p>
+<p>而这也是FOC驱动无刷电机的基本手段，<strong>即通过计算所需<code>电压矢量</code>，使用 SVPWM 技术产生调试信号，驱动三相逆变电路，合成出等效的三相正弦电压驱动电机。</strong></p>
+<p>这个会在后面进行详细介绍。</p>
+<p><strong>2.FOC控制原理</strong></p>
+<blockquote>
+<p>ok基础知识铺垫完毕，终于要进入正题啦~</p>
+</blockquote>
+<p>大家刚开始接触FOC查阅相关资料文献的时候，可能都会感觉有点晕：</p>
+<p><strong>为什么要做各种变换和反变换？</strong></p>
+<p><strong>空间矢量到底代表了啥？？</strong></p>
+<p><strong>不同扇区内为什么非得是这样的状态切换顺序？？？</strong></p>
+<p>...</p>
+<p><img alt="" src="../assets/%E9%97%AE%E5%8F%B7%E7%8C%AB.jpg" /></p>
+<p>不要担心，<strong>某奥力给曾经说过：战胜恐惧的最好方法就是面对恐惧。</strong></p>
+<p>下面就由我尝试深入浅出为大家拆解一下FOC控制，带大家直面矢量控制的核心原理~</p>
+<p><strong>2.1 FOC算法的Pipeline</strong></p>
+<p>我们先来看一下FOC控制的整个流程图景：</p>
+<p><img alt="" src="../assets/FOC%E6%8E%A7%E5%88%B6%E7%9A%84%E6%95%B4%E4%B8%AA%E6%B5%81%E7%A8%8B%E5%9B%BE%E6%99%AF.jpg" /></p>
+<p>稍微解释一下，这幅图是以<code>电流闭环控制</code>为例的，也就是让电机始终产生一个恒定的力矩（也就是恒定的电流，因为力矩和电流成正比）。</p>
+<p>可以看到控制器的输入是最左边的 <span class="arithmatex">\(I_q\_ref\)</span> ​和 <span class="arithmatex">\(I_d\_ref\)</span>，两个变量经过PID控制器进行反馈调节，其中还涉及到几个变换模块，有<code>Park变换</code>和<code>Clark变换</code>；最后通过前面提到的SVPWM模块作用到<code>三相逆变器</code>上进而控制电机；而PID控制器的反馈量，是对电机输出电流的采样值。</p>
+<p><strong>上面的过程不好理解没关系，先概括一下，FOC控制的整个过程是这样的：</strong></p>
+<p>1.对电机三相电流进行采样得到 <span class="arithmatex">\(I_a\)</span>，<span class="arithmatex">\(I_b\)</span>，<span class="arithmatex">\(I_c\)</span> <br />
+2.将 <span class="arithmatex">\(I_a\)</span>，<span class="arithmatex">\(I_b\)</span>，<span class="arithmatex">\(I_c\)</span> ​经过<code>Clark变换</code>得到​<span class="arithmatex">\(I_α\)</span>，<span class="arithmatex">\(I_β\)</span> <br />
+3.将​ <span class="arithmatex">\(I_α\)</span>，<span class="arithmatex">\(I_β\)</span> 经过<code>Park变换</code>得到 ​<span class="arithmatex">\(I_q\)</span>，<span class="arithmatex">\(I_d\)</span>  ​<br />
+4.计算 <span class="arithmatex">\(I_q\)</span>，<span class="arithmatex">\(I_d\)</span>​ 和其设定值 <span class="arithmatex">\(I_q\_ref\)</span>，<span class="arithmatex">\(I_d\_ref\)</span> 的误差 <br />
+5.将上述误差输入两个PID（只用到PI）控制器，得到输出的控制电压​ <span class="arithmatex">\(U_q\)</span>，<span class="arithmatex">\(U_d\)</span> <br />
+6.将 <span class="arithmatex">\(U_q\)</span>，<span class="arithmatex">\(U_d\)</span>​ 进行反Park变换得到<span class="arithmatex">\(U_α\)</span>，<span class="arithmatex">\(U_β\)</span>​ <br />
+7.用 <span class="arithmatex">\(U_α\)</span>，<span class="arithmatex">\(U_β\)</span> 合成电压空间矢量，输入SVPWM模块进行调制，输出该时刻三个半桥的状态编码值（前文有提到）<br />
+8.按照前面输出的编码值控制三相逆变器的MOS管开关，驱动电机 <br />
+9.循环上述步骤  </p>
+<p>下面我们来分别介绍每一步的具体操作以及意义。</p>
+<p><strong>2.2 Clark变换与Park变换</strong></p>
+<p>前面分析了，如果要平稳地驱动三相电机转动，我们就需要生成三个相位相差120度的正弦波，但是<strong>我们最终的控制对象是MOS管的开通和关断</strong>，只有<strong>电压最大值</strong>和<strong>0值</strong>两个状态啊，怎么去生成连续变化的正弦波呢？</p>
+<p>对了，用前面提到的PWM技术就可以做到，所谓<strong>SPWM</strong>就是这么干的，如下图：</p>
+<p><img alt="" src="../assets/SPWM%E6%B3%A2%E5%BD%A2.jpg" /></p>
+<p>大家观察一下上图的波形，我们用上面坐标系中的正弦波和三角波的交点投影到下面的坐标轴，以此确定PWM的占空比变化规律，这样合成的PWM波，经过低通滤波器之后，其实就等效为了一个正弦波！所以SPWM就是在PWM的基础上用正弦波来调制合成的具有正弦波规律变化的方波。</p>
+<p>不过<strong>SPWM调试方式在FOC实现中并不常用，原因是SPWM要</strong>比后面要说的<strong>SVPWM</strong>的<code>母线电压</code>利用率要<code>低15%</code>。</p>
+<p><strong>另一方面，从控制的角度来看，我们甚至根本就不想跟什么三个正弦波打交道！</strong></p>
+<p>因为要对于非线性的信号进行准确控制就要使用复杂的<code>高阶控制器</code>，这对于建模成本、处理器算力、控制实时性等都是不利的。简单地说就是，咱们控制器的反馈输入变量不是三个电流采样值嘛，你要我稳稳地跟踪三个正弦波太麻烦啦！<strong>能不能简单点跟踪一条直线（常量）</strong> 啊？</p>
+<p><strong>答案是可以的~只需应用一点数学小技巧</strong></p>
+<p><strong>Clark变换</strong></p>
+<p>我们回到上面<strong>FOC控制过程9个步骤</strong>的第1步，也就是对电机的三个相电流进行采样，这一步会使用串联的<code>采样电阻</code>（Shunt）进行电流采样。</p>
+<blockquote>
+<p>由于电机工作的电流一般很大，所以采样电阻的阻值非常小，甚至和导线的电阻接近了，因而实际的<code>采样电路</code>PCB设计的时候还有一些讲究，比如使用<code>开尔文接法</code>(Kelvin connections)。</p>
+</blockquote>
+<p>但是我们实际电路设计时可以不使用三个采样器（实际有单采样电阻、双采样电阻和三采样电阻接法），只需要两个就够了。因为由<code>基尔霍夫电流定律（KCL）</code>，在任一时刻，流入节点的电流之和等于流出节点的电流之和，也就是说​</p>
+<p><span class="arithmatex">\(I_a + I_b + I_c =0\)</span></p>
+<p>只需要知道其中两个就可以计算出第三个了。</p>
+<p>这三个电流基本上就是三个相位相差120度的正弦波，在把这些信号输入控制器反馈控制之前，我们先来做点数学游戏：</p>
+<p>我们知道三相坐标系 <span class="arithmatex">\((I_a，I_b，I_c)\)</span> 如下：</p>
+<p><img alt="" src="../assets/%E4%B8%89%E7%9B%B8%E5%9D%90%E6%A0%87%E7%B3%BB.jpg" /></p>
+<p><strong>问题：这明明是一个二维平面内的坐标系，为啥要用3个坐标轴来表示呢？</strong></p>
+<p>而且很明显​ <span class="arithmatex">\((I_a，I_b，I_c)\)</span> 这三个基向量是非正交的，学过线性代数的同学可能会想到，我们可以做一个很简单的<code>基变换</code>将其正交化为一个直角坐标系，我们把新的直角坐标系命名为 <span class="arithmatex">\(α - β\)</span> <strong>坐标系</strong>，变换公式如下：</p>
+<p><img alt="α-β坐标系" src="../assets/%CE%B1-%CE%B2%E5%9D%90%E6%A0%87%E7%B3%BB.jpg" /></p>
+<p><strong>其实就是个很简单的坐标轴投影计算，</strong> 写成矩阵形式如下：</p>
+<p><img alt="" src="../assets/%CE%B1-%CE%B2%E5%9D%90%E6%A0%87%E7%B3%BB%E7%9F%A9%E9%98%B5%E5%BD%A2%E5%BC%8F.jpg" /></p>
+<p>于是我们就回到直角坐标系啦，是不是很开心，变换前后的波形如下：</p>
+<p><img alt="" src="../assets/%E7%9B%B4%E8%A7%92%E5%9D%90%E6%A0%87%E7%B3%BB.jpg" /></p>
+<p>可以看到变换后其实还是正弦波...只不过我们少了一个需要控制的变量了，现在只需要控制​ <br />
+<span class="arithmatex">\(I_α\)</span>，<span class="arithmatex">\(I_β\)</span> 这两个变量，让其满足上图的下面的波形变化规律就可以控制电机旋转了，频率还是不变的。</p>
+<blockquote>
+<p>注意这里的​ <span class="arithmatex">\(I_α\)</span>，<span class="arithmatex">\(I_β\)</span> 是我们虚拟出来的变量，所以在计算出一组​ <span class="arithmatex">\(I_α\)</span>，<span class="arithmatex">\(I_β\)</span> 后，我们通过上述公式的反向变换公式变换回去再应用到电机的三相上。</p>
+</blockquote>
+<p><strong>就这？</strong></p>
+<p>当然不是，如果只是为了减小一个控制变量那这个<strong>变换/反变换</strong>操作显然有点多此一举。</p>
+<p>有趣的是我们还可以接着变换：虽然 <span class="arithmatex">\(α\)</span>，<span class="arithmatex">\(β\)</span> ​<strong>坐标系</strong>下少了一维变量，但是新的变量还是非线性的（正弦），有没有办法把它们线性化呢？有的，Park变换就是做这个工作的。</p>
+<p><strong>Park变换</strong></p>
+<p>这一步中我们接着Clark变换将 <span class="arithmatex">\(α\)</span> - <span class="arithmatex">\(β\)</span> <strong>​坐标系</strong>旋转 <span class="arithmatex">\(θ\)</span> ​度，其中 <span class="arithmatex">\(θ\)</span> <strong>​是转子当前的角度</strong>，如下图：</p>
+<p><img alt="" src="../assets/%E8%BD%AC%E5%AD%90%E5%BD%93%E5%89%8D%E7%9A%84%E8%A7%92%E5%BA%A6.jpg" /></p>
+<p>变换公式如下：</p>
+<p><img alt="" src="../assets/Park%E5%8F%98%E6%8D%A2%E5%85%AC%E5%BC%8F.jpg" /></p>
+<p>也很简单，就是作用了一个<code>旋转矩阵</code>，写成矩阵形式：</p>
+<p><img alt="" src="../assets/Park%E5%8F%98%E6%8D%A2%E5%85%AC%E5%BC%8F%E7%9F%A9%E9%98%B5%E5%BD%A2%E5%BC%8F.jpg" /></p>
+<p>也就是说，这个​ <span class="arithmatex">\(d - q\)</span> <strong>坐标系</strong>是始终跟着转子旋转的！</p>
+<p>这个操作是可行的，因为我们会通过编码器输入转子的实时旋转角度，所以这个角度​始终是一个已知数。经过这一步的变换，我们会发现，一个匀速旋转向量在这个坐标系下变成了一个定值！（显然的嘛，因为参考系相对于该向量静止了），这个坐标系下两个控制变量都被线性化了！<br />
+<img alt="" src="../assets/Park%E5%8F%98%E6%8D%A2%E5%89%8D%E5%90%8E%E7%9A%84%E6%B3%A2%E5%BD%A2.jpg" /></p>
+<blockquote>
+<p><center>Park变换前后的波形</center></p>
+</blockquote>
+<p>接下来如果我们以 <span class="arithmatex">\(I_q\)</span>，<span class="arithmatex">\(I_d\)</span> ​这两个值作为反馈控制的对象，那么显然就可以使用一些线性控制器来进行控制了，<strong>比如PID</strong>（是的，尽管学术界有很多炫酷的高级控制方法， 但是工业界还是偏爱PID）。</p>
+<p>至此我们已经理解完上面<strong>FOC控制过程9个步骤</strong>的前3步了。</p>
+<p><strong>2.3 PID控制</strong></p>
+<p><strong>PID（比例、积分、微分）</strong> 控制是啥这篇文章就不多讲解了，基础中的基础，也有大把文章做介绍的，不熟悉的可以自行搜索相关资料。</p>
+<p>在FOC控制中主要用到三个PID环，从内环到外环依次是：<strong>电流环、速度环、位置环。</strong></p>
+<p>也就是说：我们<strong>通过电流反馈来控制电机电流（扭矩） -&gt; 然后通过控制扭矩来控制电机的转速 -&gt; 再通过控制电机的转速控制电机位置。</strong></p>
+<p>其中最内环的电流换控制框图如下：</p>
+<p><img alt="" src="../assets/PID%E7%94%B5%E6%B5%81%E7%8E%AF.jpg" /></p>
+<blockquote>
+<p><center>PID电流环</center>  </p>
+</blockquote>
+<p>可以看出来，这也就是前面提到的FOC控制9个步骤所描述的过程。实际只用到了<code>PI控制</code>，没有引入微分，因为如果推导一下电压和电流的<code>传递函数</code>会发现这其实就是一个<code>一阶惯性环节</code>（而且实际上我们可以通过<code>零极点</code>对消来简化掉<code>PI参数</code>，只需要控制一个参数即<code>电流带宽</code>即可）。</p>
+<blockquote>
+<p>上图中的<code>Speed &amp; Position</code>模块可以是编码器，或者<strong>霍尔传感器</strong>等能感应转子位置的传感器 。</p>
+</blockquote>
+<p>特别说明一下其中的 <span class="arithmatex">\(I_q\)</span>，<span class="arithmatex">\(I_d\)</span>，<span class="arithmatex">\(I_q\_ref\)</span>，<span class="arithmatex">\(I_d\_ref\)</span>，前两者大家知道是通过<code>Clark变换</code>和<code>Park变换</code>得到的，而后两者是我们预期希望前两者达到的值，这个值具体代表了什么物理量呢？参考一下下图：  </p>
+<p><img alt="" src="../assets/%E9%AA%91%E5%9C%A8%E6%AF%9B%E9%A9%B4%E4%B8%8A%E5%90%8A%E4%B8%80%E6%A0%B9%E8%83%A1%E8%90%9D%E5%8D%9C.jpg" /></p>
+<p>也就是说我们一通操作将<code>转子磁链</code>进行了<strong>解耦</strong>，分解为了转子旋转的<strong>径向<span class="arithmatex">\(I_D\)</span></strong>和<strong>切向<span class="arithmatex">\(I_Q\)</span></strong> 这两个方向的变量：</p>
+<ul>
+<li>其中 <span class="arithmatex">\(I_d\)</span> 是我们不需要的，我们希望尽可能把它控制为0 </li>
+<li>而 <span class="arithmatex">\(I_q\)</span> 是我们需要的，代表了期望的力矩输出  </li>
+</ul>
+<p><img alt="" src="../assets/FOC%E7%9A%84%E6%8E%A7%E5%88%B6%E7%9B%AE%E6%A0%87.jpg" /></p>
+<blockquote>
+<p><center>FOC的控制目标</center></p>
+</blockquote>
+<p>通过PID控制器使用上述输入（电流采样值、编码器位置）和输出（MOS管开关状态）完成对电机电流的闭环控制。</p>
+<p>然后进入到下一层的速度环：</p>
+<p><img alt="" src="../assets/%E9%80%9F%E5%BA%A6-%E7%94%B5%E6%B5%81%E5%8F%8C%E7%8E%AF%E6%8E%A7%E5%88%B6.jpg" /></p>
+<blockquote>
+<p><center>速度-电流双环控制</center>  </p>
+</blockquote>
+<p>在上图中， <span class="arithmatex">\(Speed_{ref}\)</span> 是速度设定值， <span class="arithmatex">\(ω\)</span> 是电机的转速反馈，可以通过电机编码器或者霍尔传感器等计算得到，依然是使用<strong>PI控制</strong>。</p>
+<p>将计算得到的电机速度 <span class="arithmatex">\(ω\)</span> 与速度设定值 <span class="arithmatex">\(Speed_{ref}\)</span> 进行误差值计算，代入速度PI环，计算的结果作为电流环的输入，就实现了速度-电流的双闭环控制。</p>
+<p>最外一层是位置环，也就是可以控制电机旋转到某个精确的角度并保持，控制框图如下：</p>
+<p><img alt="" src="../assets/%E4%BD%8D%E7%BD%AE-%E9%80%9F%E5%BA%A6-%E7%94%B5%E6%B5%81%E4%B8%89%E7%8E%AF%E6%8E%A7%E5%88%B6.jpg" /></p>
+<blockquote>
+<p><center>位置-速度-电流三环控制</center>  </p>
+</blockquote>
+<p>同理应该很简单可以理解，上图中位置控制PID只用了P项（也可以使用PI）。</p>
+<p>在实际使用中，由于编码器无法直接返回电机转速 <span class="arithmatex">\(ω\)</span> ，因此可以通过计算一定时间内的编码值变化量来表示电机的转速（也即用<strong>平均速度</strong>代表<strong>瞬时速度</strong>）。当电机转速比较高的时候，这样的方式是可以的；但是在位置控制模式的时候，电机的转速会很慢（因为是要求转子固定在某个位置嘛），这时候用平均测速法会存在非常大的误差（转子不动或者动地很慢，编码器就没有输出或者只输出1、2个脉冲）。</p>
+<p>所以为了避免速度环节带来的误差，在做位置控制的时候可以只使用位置和电流组成的双环进行控制，不过此时需要对位置环做一定的变化，控制框图如下：</p>
+<p><img alt="" src="../assets/%E4%BD%8D%E7%BD%AE-%E7%94%B5%E6%B5%81%E5%8F%8C%E9%97%AD%E7%8E%AF%E6%8E%A7%E5%88%B6.jpg" /></p>
+<blockquote>
+<p><center>位置-电流双闭环控制</center>  </p>
+</blockquote>
+<p>由于去掉了速度环，这里的位置环我们使用完整的<strong>PID控制</strong>，即把微分项加上（因为位置的微分就是速度，这样可以减小位置控制的震荡加快收敛；<code>积分项</code>的作用是为了消除静态误差）。</p>
+<p><strong>好了，至此整个控制回路基本上捋清楚了</strong>，但是还有一些细节我们没讲到，就是上面框图中的<code>SVPWM模块</code>。</p>
+<p>细心的同学可会发现，在整个控制流程图里面有<code>Park变换</code>和对应的<code>反Park变换</code> ，但是却没有<code>Clark变换</code>对应的<code>反Clark变换</code> ，取而代之的是一个<code>SVPWM模块</code>。</p>
+<p>下面会对SVPWM技术进行详细介绍。</p>
+<p><strong>2.4 空间电压矢量</strong></p>
+<p>什么是空间电压矢量？</p>
+<p>空间电压矢量是我们在控制电机过程中虚拟出来的一个矢量，既然是矢量，自然是有大小和方向的，那么它的大小和方向是什么呢？</p>
+<p>还是以前面<strong>三相逆变驱动电路</strong>那幅图中的状态为例，输入100的状态：</p>
+<p><img alt="" src="../assets/100.jpg" /></p>
+<p>此时<code>等效电路</code>如图：</p>
+<p><img alt="" src="../assets/100%E7%AD%89%E6%95%88%E7%94%B5%E8%B7%AF.jpg" /></p>
+<p>因此电机中三个相电压（相电压是每相相对于电机中间连接点的电压）可以表示为：</p>
+<p><img alt="alt text" src="../assets/%E5%88%86%E5%8E%8B%E5%85%AC%E5%BC%8F.jpg" /></p>
+<blockquote>
+<p>其实就是个最简单的<code>分压电路</code>，其中 <span class="arithmatex">\(U_{dc}\)</span> ​是母线电压，也就是电源电压。</p>
+</blockquote>
+<p>如果我们规定指向中心的方向为正，反之为负，那么此时我们可以画出下图中的三个电压矢量​​ <span class="arithmatex">\(\overrightarrow {U_a}\)</span>、<span class="arithmatex">\(\overrightarrow {U_b}\)</span>、<span class="arithmatex">\(\overrightarrow {U_c}\)</span>（左边），以及它们的合成电压矢量​ <span class="arithmatex">\(\overrightarrow{U}\)</span>（右边）：</p>
+<p><img alt="" src="../assets/%E4%B8%89%E4%B8%AA%E7%94%B5%E5%8E%8B%E7%9F%A2%E9%87%8F%E2%80%8B%E2%80%8B.jpg" /></p>
+<p>也就是说，这个状态下我们可以认为电机中存在一个矢量 <span class="arithmatex">\(\overrightarrow{U}\)</span> ​表征的电压（电流）；然后根据右手螺旋定则，可以判断出磁场的磁力线方向，也是和矢量 <span class="arithmatex">\(\overrightarrow{U}\)</span> ​一致的。</p>
+<p>再结合前面章节的分析，转子永磁体会努力旋转到内部磁力线和外部磁场方向一致，<strong>所以这个矢量​其实就可以表征我们希望转子旋转到的方向，也即所需要生成的磁场方向了</strong>。而这个矢量是会不断在空间中旋转的，它的幅值不变，为相电压峰值 <span class="arithmatex">\(U_{dc}\)</span> ​，且以角速度 <span class="arithmatex">\(ω = 2πf\)</span> ​匀速旋转。</p>
+<p>我们后面将会看到，SVPWM算法的目的，就是使用三相桥的开关状态把在空间中旋转的​矢量表示出来，我们把这个矢量称为<strong>空间电压矢量</strong>。</p>
+<p>用数学公式来表示的话就是：</p>
+<p><img alt="空间电压矢量" src="../assets/%E7%A9%BA%E9%97%B4%E7%94%B5%E5%8E%8B%E7%9F%A2%E9%87%8F%E5%85%AC%E5%BC%8F.jpg" /></p>
+<p>为了研究各相上下桥臂不同开关组合时逆变器输出的空间电压矢量，我们定义开关函数<br />
+<span class="arithmatex">\(S_x(x∈a,b,c)\)</span> ​为：</p>
+<div class="arithmatex">\[
+S_x=
+\begin{cases}
+1,\quad 上桥臂导通 \\[2ex]
+0, \quad 下桥臂导通
+\end{cases}
+\]</div>
+<p>​上桥臂导通下桥臂导通</p>
+<p><span class="arithmatex">\((S_a,S_b,S_c)\)</span> 的全部可能组合共有8个，包括 6个非零矢量​ ：</p>
+<p><span class="arithmatex">\(U_1(001)\)</span>、<span class="arithmatex">\(U_2(010)\)</span>、<span class="arithmatex">\(U_3(011)\)</span>、<span class="arithmatex">\(U_4(100)\)</span>、<span class="arithmatex">\(U_5(101)\)</span>、<span class="arithmatex">\(U_6(110)\)</span></p>
+<p>和两个零矢量​：</p>
+<p><span class="arithmatex">\(U_0(000)\)</span>、<span class="arithmatex">\(U_7(111)\)</span></p>
+<p>可以看出零矢量状态下电机三相间电压都为0不产生转矩（不考虑反电动势）。</p>
+<p>下面以其中一种开关组合为例分析，假设 <span class="arithmatex">\(S_x = U_4(100)\)</span>，也即这张图中的状态：</p>
+<p><img alt="100" src="../assets/100.jpg" /></p>
+<p>如前文分析，此时的电压矢量为AO方向，大小为 <span class="arithmatex">\(U_{dc}\)</span> ，我们把这个矢量画在坐标轴中如图：</p>
+<p><img alt="" src="../assets/ABC%E5%9D%90%E6%A0%87%E7%B3%BB%E5%92%8C%CE%B1%CE%B2%E5%9D%90%E6%A0%87%E7%B3%BB%E4%B8%8B%E7%9A%84%E7%9F%A2%E9%87%8F%E8%A1%A8%E7%A4%BA.jpg" /></p>
+<p><center>ABC坐标系和αβ坐标系下的矢量表示</center>  </p>
+<blockquote>
+<p>注意上图中的(100)矢量方向和AO方向是相反的（变成OA方向），这跟正方向的定义有关，这样的规定更直观一些。<br />
+同时可以注意到两个零矢量其实和原点重合了，因为这两个状态下电机中产生力矩的磁场为0（不考虑旋转过程中的反电动势产生的阻力力矩）。</p>
+</blockquote>
+<p>同理，上图中还可以看出其余5个空间电压矢量，它们的端点组成了一个正六边形，同时把平面划分成了六个扇区（也就是图中的Ⅰ、Ⅱ、Ⅲ、Ⅳ、Ⅴ、Ⅵ）。</p>
+<p><strong>那么这里问题就来了：由这6个空间电压矢量只能产生6个方向的力矩啊，我们怎么产生任意方向的力矩呢？</strong></p>
+<p><strong>2.5 SVPWM技术</strong></p>
+<p>既然是“矢量控制”，当然是有办法的，答案就是：<strong>使用这6个空间电压矢量作为基向量来合成任意矢量</strong>。在每一个扇区，选择相邻两个电压矢量以及零矢量，按照<code>伏秒平衡</code>原则来合成每个扇区内的任意电压矢量，即：</p>
+<p><img alt="" src="../assets/%E5%90%88%E6%88%90%E6%AF%8F%E4%B8%AA%E6%89%87%E5%8C%BA%E5%86%85%E7%9A%84%E4%BB%BB%E6%84%8F%E7%94%B5%E5%8E%8B%E7%9F%A2%E9%87%8F%E5%85%AC%E5%BC%8F.jpg" /></p>
+<p>离散化后等效为下式：</p>
+<p><img alt="" src="../assets/%E5%90%88%E6%88%90%E6%AF%8F%E4%B8%AA%E6%89%87%E5%8C%BA%E5%86%85%E7%9A%84%E4%BB%BB%E6%84%8F%E7%94%B5%E5%8E%8B%E7%9F%A2%E9%87%8F%E7%A6%BB%E6%95%A3%E7%AD%89%E6%95%88%E5%85%AC%E5%BC%8F.jpg" /></p>
+<p>式子中的 <span class="arithmatex">\(U_{ref}\)</span> 是我们期望得到的电压矢量，T是一个<code>PWM周期</code>。</p>
+<p><span class="arithmatex">\(U_x\)</span> 和 <span class="arithmatex">\(U_y\)</span> 分别是用于合成 <span class="arithmatex">\(U_{ref}\)</span> 的两个空间电压矢量，也就是上面说的6个基向量中的两个，至于是哪两个？这跟 <span class="arithmatex">\(U_{ref}\)</span> 所在的扇区有关，比如 <span class="arithmatex">\(U_{ref}\)</span> 在Ⅰ扇区，那么 <span class="arithmatex">\(U_x\)</span> 和 <span class="arithmatex">\(U_y\)</span> 就是 <span class="arithmatex">\(U_4\)</span> 和 <span class="arithmatex">\(U_6\)</span> ；<span class="arithmatex">\(T_x\)</span> 和 <span class="arithmatex">\(T_y\)</span> 就是在一个周期T中 <span class="arithmatex">\(U_x\)</span> 和 <span class="arithmatex">\(U_y\)</span> 所占的时间。</p>
+<p><span class="arithmatex">\(U^*_0\)</span> 指的是两个零矢量，可以是 <span class="arithmatex">\(U_0\)</span> 也可以是 <span class="arithmatex">\(U_7\)</span> ，零矢量的选择比较灵活，通过合理地配置零矢量可以让空间电压矢量的切换更平顺，后面会做说明。</p>
+<p>所以上面公式的含义就是：<strong>我们可以周期性地在不同空间电压矢量之间切换，只要合理地配置不同基向量在一个周期中的占空比，就可以合成出等效的任意空间电压矢量了。</strong></p>
+<p>是不是跟PWM的思想完全一样呢，这也是为什么这个方法被成为SVPWM（<code>空间电压矢量脉宽调制</code>）。</p>
+<p>下面举一个栗子，假设我们要合成图中所示的 <span class="arithmatex">\(U_{ref}\)</span> ，在Ⅰ扇区：</p>
+<p><img alt="" src="../assets/%E2%85%A0%E6%89%87%E5%8C%BA.jpg" /></p>
+<p>显然我们可以通过 <span class="arithmatex">\(U_4\)</span> 和 <span class="arithmatex">\(U_6\)</span> 来合成 <span class="arithmatex">\(U_{ref}\)</span> ，那么如图将 <span class="arithmatex">\(U_{ref}\)</span> 投影分解到 <span class="arithmatex">\(U_4\)</span> 和 <span class="arithmatex">\(U_6\)</span>的方向，由<code>正弦定理</code>有：</p>
+<p><img alt="" src="../assets/I%E6%89%87%E9%9D%A2%E6%AD%A3%E5%BC%A6%E5%AE%9A%E7%90%86%E5%85%AC%E5%BC%8F.jpg" /></p>
+<p>又因为 <span class="arithmatex">\(|U_4| = |U_6| = \frac{2}{3}U_{dc}\)</span> ，所以可以计算得到 <span class="arithmatex">\(T_4\)</span> 和 <span class="arithmatex">\(T_6\)</span>：</p>
+<p><img alt="" src="../assets/I%E6%89%87%E9%9D%A2T4%E5%92%8CT6%E8%A7%92%E5%BA%A6%E5%85%AC%E5%BC%8F.jpg" /></p>
+<p>其中m为SVPWM的调制系数（即<code>调制比</code>）： <span class="arithmatex">\(m = \sqrt3 \cdot \frac{U_{ref}}{U_{dc}}\)</span></p>
+<blockquote>
+<p>显然在电流环控制过程中m设置得越大代表了期望力矩越大。</p>
+</blockquote>
+<p>而零矢量分配的时间为：<span class="arithmatex">\(T_0 = T_7 = \frac{1}{2}(T - T_4 - T_6)\)</span></p>
+<blockquote>
+<p>为什么 <span class="arithmatex">\(T_0 = T_7\)</span> ? 这是我们将PWM波形设定为中央对齐模式对称配置零矢量的结果，后面会提到。</p>
+</blockquote>
+<p>现在一个周期内所有状态的持续时间我们都得到了，还差一个顺序，也就是各个状态切换的顺序。</p>
+<blockquote>
+<p>问题：难道不是任意顺序都可以嘛？反正是做积分，重要的是持续时间而不是顺序，一个周期内怎么切换都行啊。</p>
+</blockquote>
+<p>是的，理论上任何切换顺序都是ok的，但是实际中我们需要考虑更多限制，比如因为MOS管存在<code>开关损耗</code>，<strong>我们希望能尽量减少MOS管的开关次数</strong>，那么以最大限度减少开关损耗为目的，我们就可以设计出下面的切换顺序：</p>
+<p><img alt="" src="../assets/%E5%88%87%E6%8D%A2%E9%A1%BA%E5%BA%8F.jpg" /></p>
+<p>上图中可以看出来，在每个状态切换的时候，都只有一个相发生了转变：<strong>000-&gt;100-&gt;110-&gt;111-&gt;110-&gt;100-&gt;000</strong>，这也是所谓的<code>七段式SVPWM调制法</code>。</p>
+<p>同时我们通过在合理的位置插入两个零矢量，并且对零矢量在时间上进行了平均分配，以使产生的PWM对称，从而有效地降低了<code>PWM的谐波分量</code>。</p>
+<p>同理，我们也可以列出在其他扇区时的切换顺序：</p>
+<p><img alt="" src="../assets/%E5%85%B6%E4%BB%96%E6%89%87%E5%8C%BA%E6%97%B6%E7%9A%84%E5%88%87%E6%8D%A2%E9%A1%BA%E5%BA%8F.jpg" /></p>
+<p>至此，SVPWM的工作完成了，我们得到了每一时刻所需要的空间电压矢量以及它们持续的时间，在处理器中赋值给对应通道的捕获比较寄存器产生相应的三个PWM波形，控制MOS管的开关，进而产生我们期望的电压、电流、力矩。</p>
+<p><strong>总结</strong>  </p>
+<p>至此FOC的原理和整个控制链路都讲完了，回想一下整个过程，再尝试解答最开始提到的问题：<strong>为什么在FOC控制中要做这么多变换和反变换？</strong></p>
+<p>因为所谓的“矢量控制”其实就是在做<strong>解耦</strong>，把相互耦合的三相磁链解耦为容易控制的交轴 <span class="arithmatex">\(I_q\)</span> 和直轴 <span class="arithmatex">\(I_d\)</span> 。整个过程就好比我们在做信号处理的时候，通过FFT把信号变换到频域进行处理之后再IFFT反变换回时域是一个道理。</p>
+<p>另外值得一提的是，本文介绍的是<strong>有感</strong>的FOC控制方法，其实FOC可以做到<code>无感控制</code>（也就是不需要编码器等额外的传感器），当然控制算法也会更加复杂，需要引入<code>前馈控制、观测器</code>等概念，无感的好处就是结构安装更简单，可以避免<code>位置传感器</code>失效的风险等等，当然这又是另外一个话题了。</p>
+<p>FOC是个强大的控制方法，通过对电机的“像素级”控制，可以实现很多应用，因为可以做“力控”，FOC是很多机器人驱动单元的基础部件，比如：</p>
+<p><img alt="" src="../assets/%E5%9B%9B%E8%B6%B3%E6%9C%BA%E5%99%A8%E4%BA%BA.jpg" /></p>
+<blockquote>
+<p><center>MIT Mini Cheetah四足机器人</center></p>
+</blockquote>
+<p>又比如，因为可以做到力矩的精确控制，我们可以用FOC驱动器配合无刷电机来实现各种<strong>力回馈装置</strong>，这就好像iPhone的<code>Haptic Engine</code>一样，可以模拟出各种以假乱真的物理效果：  </p>
+<p><img alt="" src="../assets/%E7%BD%97%E6%8A%80%E7%9A%84%E5%8A%9B%E5%9B%9E%E9%A6%88%E6%96%B9%E5%90%91%E7%9B%98.jpg" /></p>
+<blockquote>
+<p><center>罗技的力回馈方向盘</center>  </p>
+</blockquote>
+<p>最后顺便提一下，我最近也在设计一个FOC矢量驱动器，熟悉我的同学应该知道我做东西的风格就是--唯小不破，因此这次也是准备设计一个超迷你的高性能FOC驱动器。硬件已经基本完工了，电路设计如下图，分为上下叠板设计，将<code>逻辑单元</code>和<strong>功率单元</strong>分开：</p>
+<p><img alt="" src="../assets/%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6%E6%9D%BF.jpg" /></p>
+<blockquote>
+<p><center>逻辑控制板↑</center></p>
+</blockquote>
+<p><img alt="" src="../assets/%E5%8A%9F%E7%8E%87%E8%BE%93%E5%87%BA%E6%9D%BF.jpg" /></p>
+<blockquote>
+<p><center>功率输出板↑</center></p>
+</blockquote>
+<p>最后组装起来是这样的：  </p>
+<p><img alt="" src="../assets/%E7%BB%84%E8%A3%85.jpg" /></p>
+<p>同时我也给驱动器设计了个外壳（毕竟颜值就是正义啊~）：</p>
+<p><strong>关于这个驱动器的具体参数和功能呢，等我硬件加工好了再来更新~欢迎关注</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      林海城 CC-BY-4.0
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/lin-haicheng" target="_blank" rel="noopener" title="GitHub | lin-haicheng" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://space.bilibili.com/288338838" target="_blank" rel="noopener" title="Bilibili | 彼岸LiH" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M488.6 104.1c16.7 18.1 24.4 39.7 23.3 65.7v202.4c-.4 26.4-9.2 48.1-26.5 65.1-17.2 17-39.1 25.9-65.5 26.7H92.02c-26.45-.8-48.21-9.8-65.28-27.2C9.682 419.4.767 396.5 0 368.2V169.8c.767-26 9.682-47.6 26.74-65.7C43.81 87.75 65.57 78.77 92.02 78h29.38L96.05 52.19c-5.75-5.73-8.63-13-8.63-21.79 0-8.8 2.88-16.06 8.63-21.797C101.8 2.868 109.1 0 117.9 0q13.2 0 21.9 8.603L213.1 78h88l74.5-69.397C381.7 2.868 389.2 0 398 0q13.2 0 21.9 8.603c5.7 5.737 8.6 12.997 8.6 21.797 0 8.79-2.9 16.06-8.6 21.79L394.6 78h29.3c26.4.77 48 9.75 64.7 26.1m-38.8 69.7c-.4-9.6-3.7-17.4-10.7-23.5-5.2-6.1-14-9.4-22.7-9.8H96.05c-9.59.4-17.45 3.7-23.58 9.8-6.14 6.1-9.4 13.9-9.78 23.5v194.4c0 9.2 3.26 17 9.78 23.5s14.38 9.8 23.58 9.8H416.4c9.2 0 17-3.3 23.3-9.8s9.7-14.3 10.1-23.5zm-264.3 42.7c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.2 6.3-14 9.5-23.6 9.5s-17.5-3.2-23.6-9.5-9.4-14-9.8-23.2v-33.3c.4-9.1 3.8-16.9 10.1-23.2s13.2-9.6 23.3-10c9.2.4 17 3.7 23.3 10m191.5 0c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2s-14 9.5-23.6 9.5-17.4-3.2-23.6-9.5c-7-6.3-9.4-14-9.7-23.2v-33.3c.3-9.1 3.7-16.9 10-23.2s14.1-9.6 23.3-10c9.2.4 17 3.7 23.3 10"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="None" target="_blank" rel="noopener" title="qq群" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M433.754 420.445c-11.526 1.393-44.86-52.741-44.86-52.741 0 31.345-16.136 72.247-51.051 101.786 16.842 5.192 54.843 19.167 45.803 34.421-7.316 12.343-125.51 7.881-159.632 4.037-34.122 3.844-152.316 8.306-159.632-4.037-9.045-15.25 28.918-29.214 45.783-34.415-34.92-29.539-51.059-70.445-51.059-101.792 0 0-33.334 54.134-44.859 52.741-5.37-.65-12.424-29.644 9.347-99.704 10.261-33.024 21.995-60.478 40.144-105.779C60.683 98.063 108.982.006 224 0c113.737.006 163.156 96.133 160.264 214.963 18.118 45.223 29.912 72.85 40.144 105.778 21.768 70.06 14.716 99.053 9.346 99.704"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="None" target="_blank" rel="noopener" title="微信" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M385.2 167.6c6.4 0 12.6.3 18.8 1.1C387.4 90.3 303.3 32 207.7 32 100.5 32 13 104.8 13 197.4c0 53.4 29.3 97.5 77.9 131.6l-19.3 58.6 68-34.1c24.4 4.8 43.8 9.7 68.2 9.7 6.2 0 12.1-.3 18.3-.8-4-12.9-6.2-26.6-6.2-40.8-.1-84.9 72.9-154 165.3-154m-104.5-52.9c14.5 0 24.2 9.7 24.2 24.4 0 14.5-9.7 24.2-24.2 24.2-14.8 0-29.3-9.7-29.3-24.2.1-14.7 14.6-24.4 29.3-24.4m-136.4 48.6c-14.5 0-29.3-9.7-29.3-24.2 0-14.8 14.8-24.4 29.3-24.4 14.8 0 24.4 9.7 24.4 24.4 0 14.6-9.6 24.2-24.4 24.2M563 319.4c0-77.9-77.9-141.3-165.4-141.3-92.7 0-165.4 63.4-165.4 141.3S305 460.7 397.6 460.7c19.3 0 38.9-5.1 58.6-9.9l53.4 29.3-14.8-48.6C534 402.1 563 363.2 563 319.4m-219.1-24.5c-9.7 0-19.3-9.7-19.3-19.6 0-9.7 9.7-19.3 19.3-19.3 14.8 0 24.4 9.7 24.4 19.3 0 10-9.7 19.6-24.4 19.6m107.1 0c-9.7 0-19.3-9.7-19.3-19.6 0-9.7 9.7-19.3 19.3-19.3 14.5 0 24.4 9.7 24.4 19.3.1 10-9.9 19.6-24.4 19.6"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="None" target="_blank" rel="noopener" title="小红书 | 林海城" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M160 32c-35.3 0-64 28.7-64 64v224c0 35.3 28.7 64 64 64h352c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm236 106.7 96 144c4.9 7.4 5.4 16.8 1.2 24.6S480.9 320 472 320H200c-9.2 0-17.6-5.3-21.6-13.6s-2.9-18.2 2.9-25.4l64-80c4.6-5.7 11.4-9 18.7-9s14.2 3.3 18.7 9l17.3 21.6 56-84c4.5-6.6 12-10.6 20-10.6s15.5 4 20 10.7M192 128a32 32 0 1 1 64 0 32 32 0 1 1-64 0m-144-8c0-13.3-10.7-24-24-24S0 106.7 0 120v224c0 75.1 60.9 136 136 136h320c13.3 0 24-10.7 24-24s-10.7-24-24-24H136c-48.6 0-88-39.4-88-88z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="None" target="_blank" rel="noopener" title="打赏支持" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M96 64c0-17.7 14.3-32 32-32h384c70.7 0 128 57.3 128 128s-57.3 128-128 128h-32c0 53-43 96-96 96H192c-53 0-96-43-96-96zm384 160h32c35.3 0 64-28.7 64-64s-28.7-64-64-64h-32zM32 416h512c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+        <script src="../../../mkdocs/javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>
