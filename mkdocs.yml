@@ -35,6 +35,8 @@ nav:
       - 入门: LECTURE/Programming/C++/C++_Begin/C++_Begin.md
       - 核心: LECTURE/Programming/C++/C++_core/C++_core.md
       - 提高: LECTURE/Programming/C++/C++_raise/C++_raise.md
+    - linux:
+      - 命令行精简版: LECTURE/Linux/commands-concise.md
     - git:
       - git: LECTURE/Git/git.md
     - github:

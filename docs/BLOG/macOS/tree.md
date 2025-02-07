@@ -20,8 +20,8 @@ echo "alias task='cd [dir_TASK] && [dir_TASK]/.tree.py'" >> [file_runcom]
 
 其中：
 
-- `[dir_git]` -> clone GitHub项目时的目录：`/Users/yangxijie/yxj/CODE/Git`
-- `[dir_TASK]` -> 存放任务的根目录：`/Users/yangxijie/Desktop/TASK`
+- `[dir_git]` -> clone GitHub项目时的目录：`/Users/linhaicheng/CODE/Git`
+- `[dir_TASK]` -> 存放任务的根目录：`/Users/linhaicheng/Desktop/TASK`
 - `[file_runcom]` -> shell启动时读取的配置文件：`~/.zshrc`
 
 ## 使用方法 命令行
@@ -60,7 +60,7 @@ echo "alias task='cd [dir_TASK] && [dir_TASK]/.tree.py'" >> [file_runcom]
 
 需要命令行操作就要打开终端，那么如何快速打开终端呢？ Manico
 
-在[App Store](https://apps.apple.com/cn/app/manico/id724472954?mt=12)下载
+在[App Store](https://apps.apple.com/cn/app/manico/id724472954?mt=12){target="_blank"}下载
 
 免费版本有使用限制，30元购买无限制使用（划得来）
 

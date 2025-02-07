@@ -142,7 +142,7 @@ Hello, world!
 
 ##### 相对路径
 
-上面我们所说的都是绝对路径，路径从根目录（或者盘符）开始。还有一种路径的写法是**相对路径**，比如我当前在桌面，那么我描述桌面上的待办事项就可以用相对路径：`./TODO.txt`；描述我下载文件夹中的文件可以用：`../Downloads/MATLAB大作业.zip`
+上面我们所说的都是绝对路径，路径从根目录（或者盘符）开始。还有一种路径的写法是**相对路径**，比如我当前在桌面，那么我描述桌面上的待办事项就可以用相对路径：`./TODO.txt`；描述我下载文件夹中的文件可以用：`../Downloads/MATLAB.zip`
 
 这里`.`指当前的文件夹，`..`指上级文件夹（桌面和下载文件夹都在家目录下，它们是同级的）；上上级可以写作`../..`
 
@@ -329,7 +329,7 @@ int main(){
 }
 ```
 
-补充：关于`vim`的使用方式，大家可以进行参考：[菜鸟教程 | Linux vi/vim](https://www.runoob.com/linux/linux-vim.html)。记得，`vim`是一款**查看器**和**编辑器**，它能做到的事情和你电脑上文本编辑器所能做到的事情是一样的。
+补充：关于`vim`的使用方式，大家可以进行参考：[菜鸟教程 | Linux vi/vim](https://www.runoob.com/linux/linux-vim.html){target="_blank"}。记得，`vim`是一款**查看器**和**编辑器**，它能做到的事情和你电脑上文本编辑器所能做到的事情是一样的。
 
 ##### 编译链接 获得命令行程序并执行
 
@@ -356,7 +356,7 @@ $ ./SayHello
 
 ### 常用的shell命令
 
-常用的`shell命令`（`Linux命令`）有很多，下面写的是一些比较常见的。当然大家之后使用服务器还会使用到各种各样的命令，可以参考[菜鸟教程｜Linux](https://www.runoob.com/linux/linux-tutorial.html)，推荐大家直接百度查。
+常用的`shell命令`（`Linux命令`）有很多，下面写的是一些比较常见的。当然大家之后使用服务器还会使用到各种各样的命令，可以参考[菜鸟教程｜Linux](https://www.runoob.com/linux/linux-tutorial.html){target="_blank"}，推荐大家直接百度查。
 
 #### 与工作路径相关
 
@@ -457,7 +457,7 @@ mkdir ha/haha 2>> error.log # 追加错误到日志文件中
 2. 标准输出：代码为 `1` ；或称为 `stdout`；使用的方式为 `1>`
 3. 错误输出：代码为 `2` ；或称为 `stderr`；使用的方式为 `2>`
 
-（注：上述内容部分摘自[Linux中重定向及管道](https://blog.csdn.net/songyang516/article/details/6758256)）
+（注：上述内容部分摘自[Linux中重定向及管道](https://blog.csdn.net/songyang516/article/details/6758256){target="_blank"}）
 
 ##### 管道
 
@@ -486,7 +486,7 @@ abc123def（abc def得到高亮）
 $ grep "[0-9]" error.log
 ```
 
-**正则表达式**可以用来搜索并进一步提取你想要的内容。正则表达式也是开发同学的必备技能，我推荐大家大家看[菜鸟教程｜正则表达式](https://www.runoob.com/regexp/regexp-tutorial.html)；还有一个正则表达测试的网站<https://regexr.com/5mtrl>
+**正则表达式**可以用来搜索并进一步提取你想要的内容。正则表达式也是开发同学的必备技能，我推荐大家大家看[菜鸟教程｜正则表达式](https://www.runoob.com/regexp/regexp-tutorial.html){target="_blank"}；还有一个正则表达测试的网站<https://regexr.com/5mtrl>{target="_blank"}
 
 ##### ⌃C
 
@@ -582,7 +582,7 @@ $ chmod 644 my.txt # owner可读写 同组和其他用户只可读。
 
 比如我们希望创建这样一个脚本——来批量显示当前文件夹下的所有文件和文件夹。注意，这不是`ls`命令，我想要递归显示。
 
-我们使用下面的`shell`脚本[kddeisz | GitHub | tree.sh](https://github.com/kddeisz/tree/blob/master/tree.sh)做一个演示：
+我们使用下面的`shell`脚本[kddeisz | GitHub | tree.sh](https://github.com/kddeisz/tree/blob/master/tree.sh){target="_blank"}做一个演示：
 
 ```sh
 #!/usr/bin/env bash
@@ -650,9 +650,9 @@ $ ./tree.sh
 
 缺点：其并非编程语言，一些语法（甚至不能称作语法）晦涩难懂，缺少相关的debug工具（有是有）。
 
-我推荐大家在进行批处理的时候直接编写`python脚本`，现在这个时代，哪台机器上还没有个`Python3`呢？写过python的人都知道python写起来多舒服吧。我们可以在上面的脚本作者的仓库[GitHub | kddeisz | tree](https://github.com/kddeisz/tree)中找到`tree.py`，点进去一看，舒服多了ww。
+我推荐大家在进行批处理的时候直接编写`python脚本`，现在这个时代，哪台机器上还没有个`Python3`呢？写过python的人都知道python写起来多舒服吧。我们可以在上面的脚本作者的仓库[GitHub | kddeisz | tree](https://github.com/kddeisz/tree){target="_blank"}中找到`tree.py`，点进去一看，舒服多了ww。
 
-当然，有些`python`可能做不到的事情，那你就用`shell脚本`写喽。我这里也不详细说了，大家用到的时候可以自己查。学习如何编写`shell脚本`可以查看[Missing Semester｜Shell 工具和脚本](https://missing-semester-cn.github.io/2020/shell-tools/)
+当然，有些`python`可能做不到的事情，那你就用`shell脚本`写喽。我这里也不详细说了，大家用到的时候可以自己查。学习如何编写`shell脚本`可以查看[Missing Semester｜Shell 工具和脚本](https://missing-semester-cn.github.io/2020/shell-tools/){target="_blank"}
 
 #### shell配置文件
 
@@ -698,7 +698,7 @@ $ source ~/.zshrc
 
 如果大家想对终端、`shell`、命令行深入了解，可以查看下面的课程的前五节课（全看当然最好啦）（这是对我帮助很大的一门课程）：
 
-[计算机教育中缺失的一课 The Missing Semester of Your CS Education 中文版](https://missing-semester-cn.github.io)
+[计算机教育中缺失的一课 The Missing Semester of Your CS Education 中文版](https://missing-semester-cn.github.io){target="_blank"}
 
 这门课程的简介是这样的：
 
@@ -726,14 +726,14 @@ $ source ~/.zshrc
 
 #### Linux 历史概述
 
-（注：本小节内容部分参考自 [清华电子系2020年暑培 Linux部分](https://github.com/eesast/training2020/tree/master/basic_tool/linux-webserver)）
+（注：本小节内容部分参考自 [清华电子系2020年暑培 Linux部分](https://github.com/eesast/training2020/tree/master/basic_tool/linux-webserver){target="_blank"}
 
 ##### Linux 和 Unix
 首先明确，`Linux`是一个操作系统，那它就有自己的内核。内核指的是一个提供设备驱动、文件系统、进程管理、网络通信等功能的系统软件，内核并不是一套完整的操作系统，它只是操作系统的核心。`Linux 内核`最初由 `Linus Torvalds` 编写。
 
 之前我们一直提到`类Unix操作系统`，大家看下面这张图可能马上就明白了。
 
-Linux 是一个类似 Unix 的操作系统，Unix 要早于 Linux，Linux 的初衷就是要替代 UNIX，并在功能和用户体验上进行优化，所以 Linux 模仿/改进了 UNIX（但并没有抄袭 UNIX 的源码），使得 Linux 在外观和交互上与 UNIX 非常类似。——[C语言中文网 | Linux和UNIX的关系及区别](http://c.biancheng.net/view/707.html)
+Linux 是一个类似 Unix 的操作系统，Unix 要早于 Linux，Linux 的初衷就是要替代 UNIX，并在功能和用户体验上进行优化，所以 Linux 模仿/改进了 UNIX（但并没有抄袭 UNIX 的源码），使得 Linux 在外观和交互上与 UNIX 非常类似。——[C语言中文网 | Linux和UNIX的关系及区别](http://c.biancheng.net/view/707.html){target="_blank"}
 
 相比于 `UNIX`，`Linux` 最大的创新是开源免费，这是它能够蓬勃发展的最重要原因。
 
@@ -800,7 +800,7 @@ model name	: Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
 
 好了这就是我们的`Linux`。`Linux`到手了，我们也能连接上了，接下来当然是要用`Linux`来做事情了。不过在这之前，我们先需要知道，一台云端的`Linux`服务器究竟能干什么。
 
-补充：如果你之后也有购买服务器的需求，作为学生，我们可以以学生优惠在多个平台享受低至一折的优惠。可以查看[GitHub ivmm | 教育优惠](https://github.com/ivmm/Student-resources)以获取更多信息。
+补充：如果你之后也有购买服务器的需求，作为学生，我们可以以学生优惠在多个平台享受低至一折的优惠。可以查看[GitHub ivmm | 教育优惠](https://github.com/ivmm/Student-resources){target="_blank"}以获取更多信息。
 
 #### 其他方式
 
@@ -950,7 +950,6 @@ $ nginx -s reload
 
 如果`listen 23333;`注意需要在服务器的安全组中添加这个端口才能在浏览器中访问（需要输入`ip:23333`才能访问）；如果`listen 80;`且没有备案,`server_name;`是必须的（可直接输入ip地址访问）
 
-（我们之后会有更好的方式将这次讲稿部署出来的hh）
 
 ###### 部署可以交互的小游戏
 
@@ -959,7 +958,7 @@ $ nginx -s reload
 如法炮制，我们把小游戏部署上去。首先我们需要写出来一个小游戏，并且将其build为网页。关于这一步怎么做，后面开发网站的时候大概会讲到，这不是我们今天的重点；这一步我已经提前做好了，build完成的网页在我的电脑上`/Users/apple/Desktop/Linux/react-game-build`。如何将其上传至服务器呢？
 
 ```shell
-scp -r /Users/apple/Desktop/Linux/react-game-build bdy:/home/yxj/react-game
+scp -r /Users/apple/Desktop/Linux/react-game-build bdy:/home/lhc/react-game
 ```
 
 ```shell
@@ -975,7 +974,7 @@ server{
 $ nginx -s reload
 ```
 
-注：但其实这么部署不太好，你应该用域名；我在这里就不演示了。
+注：但其实这么部署不太好，应该用域名。
 
 ##### 程序编译 和 tmux
 
@@ -1014,7 +1013,7 @@ $ tmux attach -t x265 # 重新连接会话，可以看到已经编译完成了
 
 到这里，我们想到，我们可以在服务器上执行一些编译、测试的任务。是的，大家之后使用到`GitHub Actions`或者有一些自己的测试任务，就可以将它们部署到服务器上。
 
-补充：很好的`tmux命令`整理 [阮一峰的网络日志｜tmux使用教程](http://www.ruanyifeng.com/blog/2019/10/tmux.html)
+补充：很好的`tmux命令`整理 [阮一峰的网络日志｜tmux使用教程](http://www.ruanyifeng.com/blog/2019/10/tmux.html){target="_blank"}
 
 #### Linux作为开发环境？
 
@@ -1028,9 +1027,7 @@ $ tmux attach -t x265 # 重新连接会话，可以看到已经编译完成了
 
 ## 总结
 
-这次讲座，我们学习的核心是**使用命令行**。在了解**终端**和**shell**的使用之后，我们使用**Linux服务器**进行了演示。这次讲座也包含了很多**计算机相关的基础知识**。
-
-希望大家课后复习讲稿、有问题积极提问交流，可希望大家多实践，多尝试。
+这次我们学习的核心是**使用命令行**。在了解**终端**和**shell**的使用之后，我们使用**Linux服务器**进行了演示。也包含了很多**计算机相关的基础知识**。
 
 
 ## 后记
@@ -1047,7 +1044,7 @@ $ tmux attach -t x265 # 重新连接会话，可以看到已经编译完成了
 ### 预习 - Git
 
 * `Git`也是一款软件，它是命令行程序，但是也有`GUI`程序，不过我推荐大家把学习的经历放在**命令行Git**上
-* `Git`按行管理文件（也就是纯文本文件）：它没法管理二进制文件；推荐大家学一下`Markdown`，也许明天也会用到。大家可以参考[Bilibili | 杨希杰619 | 面向开发的Markdown教程](https://www.bilibili.com/video/BV1jV411j7mz)
+* `Git`按行管理文件（也就是纯文本文件）：它没法管理二进制文件；推荐大家学一下`Markdown`。大家可以参考[Bilibili | 杨希杰619 | 面向开发的Markdown教程](https://www.bilibili.com/video/BV1jV411j7mz){target="_blank"}
 
 - - -
 
@@ -1132,6 +1129,6 @@ $ tmux attach -t x265 # 重新连接会话，可以看到已经编译完成了
 
 〇 简述在`Linux服务器`上使用`tmux`的作用：（`新建多个会话 / session / 窗口`、`使得会话中的程序在ssh连接断开后保持运行`）
 
-〇 拓展：请阅读 [从 MIT 协议谈契约精神](https://mp.weixin.qq.com/s/WyBZpChPA5xLo90rBHi8Mw) 学习和了解开源以及开源协议相关的内容，并回答问题：`MIT协议`中有一句话`THE SOFTWARE IS PROVIDED "XX XX"`，`"XX XX"`代表的英文单词是（`AS IS`）；它的中文意思是（`按照原样的`）。
+〇 拓展：请阅读 [从 MIT 协议谈契约精神](https://mp.weixin.qq.com/s/WyBZpChPA5xLo90rBHi8Mw){target="_blank"} 学习和了解开源以及开源协议相关的内容，并回答问题：`MIT协议`中有一句话`THE SOFTWARE IS PROVIDED "XX XX"`，`"XX XX"`代表的英文单词是（`AS IS`）；它的中文意思是（`按照原样的`）。
 
-注：还是希望大家看懂文章之后提炼一下的。有的同学直接复制粘贴有点过于省事儿了哈
+注：还是希望大家看懂文章之后提炼一下的。如果直接复制粘贴有点过于省事儿了哈
